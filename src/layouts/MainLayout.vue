@@ -23,22 +23,31 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-purple-1"
     >
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
+          class="text-head-center"
         >
-          Essential Links
+          <img class="profile-image" src="~assets/twitter_icon2.jpg" alt="no img">
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+
+           <q-tabs
+            v-model="tab"
+            vertical
+            class="text-gray"
+            >
+          <EssentialLink
+            v-for="link in essentialLinks"
+            :key="link.title"
+            v-bind="link"
+            class="text-center"
+          />
+        </q-tabs>
+
+    </q-list>
+  </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -51,46 +60,20 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
+    title: 'Dashboard',
+    link: '#'
+  },
+  {
+    title: 'Map',
     link: 'https://quasar.dev'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
+    title: 'Report',
     link: 'https://github.com/quasarframework'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
+    title: 'Log out',
     link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
   }
 ]
 
@@ -100,8 +83,30 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      essentialLinks: linksData,
+      tab: 'mails'
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+$center: center;
+$bold: bold;
+$inset: inset;
+$menu-bar-color: lightgray;
+  .profile-image{
+    border-radius: 50%;
+    width:50%;
+  }
+  .text-center{
+    text-align: $center;
+    border-bottom-style: $inset;
+    border-bottom-width: 1px;
+    border-color: $menu-bar-color;
+  }
+  .text-head-center{
+    text-align: $center;
+    text-shadow: 2px;
+  }
+</style>
