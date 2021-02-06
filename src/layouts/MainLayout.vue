@@ -65,15 +65,15 @@ const linksData = [
   },
   {
     title: 'Map',
-    link: 'https://quasar.dev'
+    link: '#/map'
   },
   {
     title: 'Report',
-    link: 'https://github.com/quasarframework'
+    link: '#/report'
   },
   {
     title: 'Log out',
-    link: '#/login'
+    link: '#'
   }
 ]
 

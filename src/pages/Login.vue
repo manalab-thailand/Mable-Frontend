@@ -1,6 +1,10 @@
 <template>
-<div class="q-pa-md" style="max-width: 400px">
-    <div>
+    <q-page class="flex flex-center">
+    <div class="q-pa-md"
+    style="max-width: 400px;
+    margin: auto;
+    width: 60%;;
+    padding: 10px;">
         <div class="mt-center">
             <img class="logo-image" src="~assets/test-logo.jpg" alt="no-logo" width="50%">
         </div>
@@ -27,17 +31,17 @@
         lazy-rules
         :rules="[
           val => val !== null && val !== '' || 'Please type your password',
-          val => val.length > 8|| 'Password must be than 8 charector'
+          val => val.length >= 8|| 'Password must be than 8 charector'
         ]"
       />
-      <q-toggle v-model="save_password" label="Save password" />
+      <q-toggle v-model="save_password" label="Remember me" />
       <div class="mt-center">
         <q-btn label="Login" type="submit" color="primary"/>
-        <q-btn label="Forgot password" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn to="/register" label="Register" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
@@ -87,5 +91,10 @@ $center: center;
     text-align: $center;
     margin-top: 50px;
     margin-bottom: 100px;
+}
+.center{
+    margin: auto;
+    width: 60%;;
+    padding: 10px;
 }
 </style>
