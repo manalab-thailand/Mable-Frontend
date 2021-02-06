@@ -23,7 +23,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-purple-1"
+      content-class="bg-indigo-11"
     >
       <q-list>
         <q-item-label
@@ -61,7 +61,7 @@ import EssentialLink from 'components/EssentialLink.vue'
 const linksData = [
   {
     title: 'Dashboard',
-    link: '#'
+    link: '#/dashboard'
   },
   {
     title: 'Map',
@@ -73,7 +73,7 @@ const linksData = [
   },
   {
     title: 'Log out',
-    link: 'https://chat.quasar.dev'
+    link: '#/login'
   }
 ]
 
