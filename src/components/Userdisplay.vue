@@ -1,33 +1,20 @@
 <template>
-    <div>
-        <div class="grid-container">
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-        </div>
-    </div>
+<div class="user-card">
+<!-- <q-card dark bordered class="grid-item">
+    <q-card-section>
+      <div class="text-h6">Our Changing Planet</div>
+      <div class="text-subtitle2">by John Doe</div>
+    </q-card-section> -->
+</div>
 </template>
 
 <script>
 export default {
-
+  name:'user-card'
 }
 </script>
 
 <style lang="scss" scoped>
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  background-color: #2196F3;
-  padding: 10px;
-}
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
