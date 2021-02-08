@@ -73,7 +73,7 @@ const linksData = [
   },
   {
     title: 'Log out',
-    link: '#'
+    link: '/'
   }
 ]
 
