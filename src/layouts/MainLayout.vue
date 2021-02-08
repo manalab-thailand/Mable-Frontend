@@ -23,7 +23,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-indigo-11"
+      content-class="bg-primary"
     >
       <q-list>
         <q-item-label
@@ -36,7 +36,7 @@
            <q-tabs
             v-model="tab"
             vertical
-            class="text-gray"
+            class="text-info"
             >
           <EssentialLink
             v-for="link in essentialLinks"
