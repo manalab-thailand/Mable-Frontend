@@ -1,16 +1,27 @@
 <template>
-<div class="user-card">
-<!-- <q-card dark bordered class="grid-item">
-    <q-card-section>
-      <div class="text-h6">Our Changing Planet</div>
-      <div class="text-subtitle2">by John Doe</div>
-    </q-card-section> -->
-</div>
+  <div class="user-card">
+    <q-card class="my-card">
+      <q-card-section>
+        <div class="icon-zone">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="tag-zone">
+          adsfasdf
+        </div>
+        <div class="info-zone">
+         gasggfdh
+        </div>
+      </q-card-section>
+    </q-card>
+  </div>
 </template>
 
 <script>
 export default {
-  name:'user-card'
+  name: 'user-card',
+  props: {
+    userData: Array
+  }
 }
 </script>
 
