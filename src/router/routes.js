@@ -34,6 +34,27 @@ const routes = [
       { path: '', component: () => import('pages/Register.vue') }
     ]
   },
+  {
+    path: '/test',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/test.vue') }
+    ]
+  },
+  {
+    path: '/detail',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/detail.vue') }
+    ]
+  },
+  {
+    path: '/timeline',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/timeline.vue') }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

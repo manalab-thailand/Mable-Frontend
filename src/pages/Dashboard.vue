@@ -13,6 +13,25 @@
             <p>Type: {{ userData[0].type }}</p>
             <p>Location: {{ userData[0].location }}</p>
           </div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/detail">
+                <q-item-section>Detail</q-item-section>
+              </q-item>
+              <q-item tag="label" to="/map">
+                <q-item-section>Map</q-item-section>
+              </q-item>
+              <q-item tag="label">
+                <q-item-section>Reset</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
       <q-card class="my-card">
@@ -27,6 +46,25 @@
             <p>Type: {{ userData[1].type }}</p>
             <p>Location: {{ userData[1].location }}</p>
           </div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/register">
+                <q-item-section>Detail</q-item-section>
+              </q-item>
+              <q-item tag="label" to="/map">
+                <q-item-section>Map</q-item-section>
+              </q-item>
+              <q-item tag="label">
+                <q-item-section>Reset</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
 
@@ -42,6 +80,25 @@
             <p>Type: {{ userData[2].type }}</p>
             <p>Location: {{ userData[2].location }}</p>
           </div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/register">
+                <q-item-section>Detail</q-item-section>
+              </q-item>
+              <q-item tag="label" to="/map">
+                <q-item-section>Map</q-item-section>
+              </q-item>
+              <q-item tag="label">
+                <q-item-section>Reset</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
 
@@ -57,6 +114,25 @@
             <p>Type: {{ userData[3].type }}</p>
             <p>Location: {{ userData[3].location }}</p>
           </div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/register">
+                <q-item-section>Detail</q-item-section>
+              </q-item>
+              <q-item tag="label" to="/map">
+                <q-item-section>Map</q-item-section>
+              </q-item>
+              <q-item tag="label">
+                <q-item-section>Reset</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
     </div>
@@ -73,6 +149,25 @@
             <p>Type: {{ userData[4].type }}</p>
             <p>Location: {{ userData[4].location }}</p>
           </div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/register">
+                <q-item-section>Detail</q-item-section>
+              </q-item>
+              <q-item tag="label" to="/map">
+                <q-item-section>Map</q-item-section>
+              </q-item>
+              <q-item tag="label">
+                <q-item-section>Reset</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
       <q-card class="my-card">
@@ -82,6 +177,19 @@
           </div>
           <div class="tag-zone">Tag {{ userData[5].id }}</div>
           <div>Disconnected</div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/register">
+                <q-item-section>Regist</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
 
@@ -97,6 +205,25 @@
             <p>Type: {{ userData[6].type }}</p>
             <p>Location: {{ userData[6].location }}</p>
           </div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/register">
+                <q-item-section>Detail</q-item-section>
+              </q-item>
+              <q-item tag="label" to="/map">
+                <q-item-section>Map</q-item-section>
+              </q-item>
+              <q-item tag="label">
+                <q-item-section>Reset</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
 
@@ -107,6 +234,19 @@
           </div>
           <div class="tag-zone">Tag {{ userData[7].id }}</div>
           <div>Disconnected</div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/register">
+                <q-item-section>Regist</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-card-section>
       </q-card>
     </div>
@@ -281,4 +421,7 @@ export default {
   border-radius: 15px
 p
   margin: 0
+.more-detail
+  margin-top: 2rem
+  align-items: right
 </style>

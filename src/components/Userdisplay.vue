@@ -1,5 +1,5 @@
 <template>
-  <div class="user-card">
+  <div class="user-card" id="user-display">
     <q-card class="my-card">
       <q-card-section>
         <div class="icon-zone">
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'user-card',
+  name: 'user-display',
   props: {
     userData: Array
   }
