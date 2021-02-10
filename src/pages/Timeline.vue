@@ -10,7 +10,7 @@
       <q-card class="my-card">
         <q-card-section class="card-zone">
           <div class="icon-zone">
-            <i class="fal fa-file-alt"></i>
+            <i class="fas fa-file-alt"></i>
           </div>
           <div class="tag-zone">Tag {{}}</div>
           <q-btn-dropdown

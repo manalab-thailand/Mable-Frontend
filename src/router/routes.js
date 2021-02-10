@@ -55,6 +55,13 @@ const routes = [
       { path: '', component: () => import('pages/timeline.vue') }
     ]
   },
+  {
+    path: '/timeline-table',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/timelineTable.vue') }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

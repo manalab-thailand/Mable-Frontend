@@ -12,8 +12,7 @@
             <p>Tel: {{ userData[0].tel }}</p>
             <p>Type: {{ userData[0].type }}</p>
             <p>Location: {{ userData[0].location }}</p>
-          </div>
-          <q-btn-dropdown
+            <q-btn-dropdown
             class="more-detail"
             color="white"
             text-color="primary"
@@ -32,6 +31,7 @@
               </q-item>
             </q-list>
           </q-btn-dropdown>
+          </div>
         </q-card-section>
       </q-card>
       <q-card class="my-card">
@@ -351,9 +351,10 @@ export default {
   display: flex
   padding: 2rem
 .card-zone
-  background-color: blue
+  background-color: #457b9d
   text-align: center
   height: 100%
+  padding: 0rem
 .icon-zone
   background-color: green
   border-style: solid
@@ -363,6 +364,7 @@ export default {
   display: inline-block
   height: 100px
   width: 100px
+  margin: 2rem 0rem
 .card-zone-offine
   background-color: lightgray
   text-align: center
@@ -406,19 +408,17 @@ export default {
     font-size: 50px
     display: inline-block
 .tag-zone
-  padding-top: .5rem
+  padding: .5rem 0rem
   magin-top: 2rem
   text-align: center
   font-size: 25px
 .info-zone
-  background-color: lightgray
-  display: inline-block
-  padding: .5rem 1rem
+  background-color: #fff
+  display: space-between
+  text-align: center
   color: #333
   border: 2px solid transparent
   transition: 0.3s
-  margin-top: 1rem
-  border-radius: 15px
 p
   margin: 0
 .more-detail
