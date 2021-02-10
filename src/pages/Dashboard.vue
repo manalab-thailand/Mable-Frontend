@@ -1,6 +1,29 @@
 <template>
   <div id="user-card">
     <div class="flex-break">
+       <q-card class="my-card bg-warning">
+         <q-card-section class="text-center">
+        <q-icon color="primary" name="fas fa-tag" />
+      </q-card-section>
+      <q-card-section>
+        <div class="row items-center no-wrap text-center">
+          <div class="col">
+            <div class="text-h6">Tag 1</div>
+          </div>
+        </div>
+      </q-card-section>
+
+      <q-card-section class="bg-white">
+        test
+      </q-card-section>
+
+      <q-separator />
+
+      <q-card-actions>
+        <q-btn flat>Action 1</q-btn>
+        <q-btn flat>Action 2</q-btn>
+      </q-card-actions>
+    </q-card>
       <q-card class="my-card">
         <q-card-section class="card-zone">
           <div class="icon-zone">
