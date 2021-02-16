@@ -148,7 +148,6 @@ export default {}
     padding: 2rem
     width: 100%
 .card-zone
-    background-color: blue
     text-align: center
 .info-zone
     background-color: lightgray
