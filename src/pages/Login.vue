@@ -36,8 +36,8 @@
       />
       <q-toggle v-model="save_password" label="Remember me" />
       <div class="mt-center">
-        <q-btn label="Login" type="submit" color="primary"/>
-        <q-btn to="/register" label="Register" color="secondary" class="q-ml-sm" />
+        <q-btn label="Login" type="submit" color="positive"/>
+        <q-btn to="/register" label="Register" color="negative" class="q-ml-sm" />
       </div>
     </q-form>
     </div>

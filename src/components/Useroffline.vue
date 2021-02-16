@@ -1,6 +1,6 @@
 <template>
-  <div id="user-display">
-    <q-card class="my-card bg-warning">
+  <div id="user-offline">
+    <q-card class="my-card bg-accent">
       <q-card-section class="text-center">
         <q-icon color="primary" name="fas fa-tag" />
       </q-card-section>
@@ -14,10 +14,10 @@
       </q-card-section>
 
       <q-card-section class="bg-info">
-        <p>name: {{ userData[0].name }}</p>
-        <p>tel: {{ userData[0].tel}}</p>
-        <p>type: {{ userData[0].type }}</p>
-        <p>location: {{ userData[0].location }}</p>
+        <p>name: {{userData[0].name}}</p>
+        <p>tel: {{userData[0].tel}}</p>
+        <p>type: {{userData[0].type}}</p>
+        <p>location: {{userData[0].location}}</p>
       </q-card-section>
 
       <q-separator />
@@ -32,27 +32,19 @@
 <script>
 const userData = [
   {
-    id: 1,
-    name: 'Mr.Apple',
-    tel: '0921624517',
-    type: 'Winter banana',
+    id: 2,
+    name: 'Mr.Banana',
+    tel: '0215423154',
+    type: 'Silver Bluggoe',
     location: '1202A',
-    status: 'Online'
+    status: 'Offline'
   }
 ]
 export default {
-  name: 'user-display',
-  props: {
-    UserData: Array
-  },
-  data () {
-    return {
-      userData
-    }
-  }
+  name: 'user-offline',
+  data () { return { userData } }
 }
+
 </script>
 
-<style lang="sass" scoped>
-
-</style>
+<style lang="sass" scoped></style>
