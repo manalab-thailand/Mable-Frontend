@@ -140,7 +140,7 @@ export default {}
     width: 100%
     height: 100%
 .info-zone
-    background-color: lightgray
+    background-color: lightblue
     justify-content: center
     width: 50%
     padding: 2rem
