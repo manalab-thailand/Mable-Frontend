@@ -1,13 +1,11 @@
 <template>
+
     <q-page class="flex flex-center">
     <div class="q-pa-md"
     style="max-width: 400px;
     margin: auto;
     width: 60%;;
     padding: 10px;">
-        <div class="mt-center">
-            <img class="logo-image" src="~assets/test-logo.jpg" alt="no-logo" width="50%">
-        </div>
         <q-form
       @submit="onSubmit"
       @reset="onReset"
@@ -83,14 +81,11 @@ export default {
 <style lang="scss" scoped>
 $center: center;
 .mt-center{
+  width: 100%;
     text-align: $center;
 }
 .logo-image{
-    border-radius: 50%;
-    width: 50%;
-    text-align: $center;
-    margin-top: 50px;
-    margin-bottom: 100px;
+  width: 100%;
 }
 .center{
     margin: auto;

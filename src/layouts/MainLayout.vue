@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Mable
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>BY ManaLab PSU</div>
       </q-toolbar>
     </q-header>
 
