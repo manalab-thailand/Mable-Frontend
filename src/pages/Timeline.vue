@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="grid-container">
-      <div class="info-zone">
+      <div class="info-zone shadow-3">
         <p>Name: {{}}</p>
         <p>Tel: {{}}</p>
         <p>Type: {{}}</p>
@@ -13,19 +13,6 @@
             <i class="fal fa-file-alt"></i>
           </div>
           <div class="tag-zone">Tag {{}}</div>
-          <q-btn-dropdown
-            class="more-detail"
-            color="white"
-            text-color="primary"
-            label="..."
-            size="sm"
-          >
-            <q-list dense>
-              <q-item tag="label" to="/timeline">
-                <q-item-section>Timeline</q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
         </q-card-section>
       </q-card>
     </div>
@@ -149,10 +136,14 @@ export default {}
     width: 100%
 .card-zone
     text-align: center
+    padding: 2rem
+    width: 100%
+    height: 100%
 .info-zone
     background-color: lightgray
     justify-content: center
     width: 50%
+    padding: 2rem
 .my-card
     width: 50%
     max-width: 300px
