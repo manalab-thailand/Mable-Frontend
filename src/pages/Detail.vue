@@ -6,13 +6,13 @@
           <div class="icon-zone">
             <i class="fas fa-check"></i>
           </div>
-          <div class="tag-zone">Tag {{ userData[0].id }}</div>
+          <!-- <div class="tag-zone">Tag {{ userData[0].id }}</div>
           <div class="info-zone">
             <p>Name: {{ userData[0].name }}</p>
             <p>Tel: {{ userData[0].tel }}</p>
             <p>Type: {{ userData[0].type }}</p>
             <p>Location: {{ userData[0].location }}</p>
-          </div>
+          </div> -->
           <q-btn-dropdown
             class="more-detail"
             color="white"
