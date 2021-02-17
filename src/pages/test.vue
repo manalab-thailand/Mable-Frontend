@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <Userdisplay />
+    <div class="flex-break">
+      <Userdisplay />
+      <Userdisplay />
+      <Userdisplay />
+      <Userdisplay />
+    </div>
   </div>
 </template>
 
@@ -10,8 +15,18 @@ export default {
   name: 'App',
   components: {
     Userdisplay
+  },
+  data: function () {
+    return {
+      id: 1,
+      name: 'Yatogami Tohka',
+      tel: '055-555-5555',
+      type: 'Saldanfon',
+      location: '1202A'
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="sass" scoped>
+</style>
