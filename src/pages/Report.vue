@@ -21,7 +21,7 @@
             size="sm"
           >
             <q-list dense>
-              <q-item tag="label" to="/timeline">
+              <q-item tag="label" to="/timeline-table">
                 <q-item-section>Timeline</q-item-section>
               </q-item>
             </q-list>
