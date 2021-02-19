@@ -1,14 +1,14 @@
 <template>
   <div>
     <q-tabs v-model="tab" class="tab-zone">
-      <q-tab name="Dairy" label="Dairy" />
+      <q-tab name="Dairy" label="Dairy"  />
       <q-tab name="Weekly" label="Weekly" />
       <q-tab name="Monthly" label="Monthly" />
     </q-tabs>
      <div class="q-pa-md">
     <q-table
       class="my-sticky-header-table"
-      title="Treats"
+      title="Timeline"
       :data="data"
       :columns="columns"
       row-key="name"
@@ -54,43 +54,43 @@ export default {
           label: 'Limeline',
           field: 'timeline',
           sortable: true
-        },
-        {
-          name: 'calcium',
-          label: 'Calcium (%)',
-          field: 'calcium',
-          sortable: true,
-          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
-        },
-        {
-          name: 'iron',
-          label: 'Iron (%)',
-          field: 'iron',
-          sortable: true,
-          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
+                
         }
+
       ],
 
       data: [
         {
-          name: 'Frozen Yogurt',
-          timeStart: 8.30,
-          timeStop: 11.00,
-          type: 24,
-          location: 4.0,
-          timeline: 87,
-          calcium: '14%',
-          iron: '1%'
+          name: 'Harry xxxxx',
+          timeStart: '8.30',
+          timeStop: '11.00',
+          type: 'Xxxxxxxxxx',
+          location: '1202A',
+          timeline: 87
         },
         {
-          name: 'KitKat',
-          timeStart: 518,
-          timeStop: 26.0,
-          type: 65,
-          location: 7,
-          timeline: 54,
-          calcium: '12%',
-          iron: '6%'
+          name: 'Oliver xxxx',
+          timeStart: '11.30',
+          timeStop: '13.20',
+          type: 'xxxxxx',
+          location: '1202A',
+          timeline: 54
+        },
+        {
+          name: 'Jack xxxxx',
+          timeStart: '14.30',
+          timeStop: '15.00',
+          type: 'xxxxxxx',
+          location: '1302A',
+          timeline: 54
+        },
+        {
+          name: 'Alfie xxxxx',
+          timeStart: '15.28',
+          timeStop: '16.30',
+          type: 'xxxxxxx',
+          location: '1402A',
+          timeline: 54
         }
       ]
     }
@@ -101,7 +101,7 @@ export default {
 <style lang="sass">
 .my-sticky-header-table
   /* height or max-height is important */
-  height: 310px
+  height: 490px
 
   .q-table__top,
   .q-table__bottom,
