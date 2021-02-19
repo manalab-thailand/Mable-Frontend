@@ -1,29 +1,30 @@
 <template>
   <div>
     <q-tabs v-model="tab" class="tab-zone">
-      <q-tab name="Dairy" label="Dairy"  />
-      <q-tab name="Weekly" label="Weekly" />
-      <q-tab name="Monthly" label="Monthly" />
+      <q-tab name="mails" label="Dairy" />
+      <q-tab name="alarms" label="Weekly" />
+      <q-tab name="movies" label="Monthly" />
     </q-tabs>
-     <div class="q-pa-md">
-    <q-table
-      class="my-sticky-header-table"
-      title="Timeline"
-      :data="data"
-      :columns="columns"
-      row-key="name"
-      flat
-      bordered
-    />
-  </div>
+    <div class="q-pa-md">
+      <q-table
+        class="my-sticky-header-table"
+        title="Timeline"
+        :data="data"
+        :columns="columns"
+        row-key="name"
+        flat
+        bordered
+      />
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   data () {
     return {
-      tab: 'Dairy',
+      tab: 'mails',
       columns: [
         {
           name: 'name',
@@ -51,44 +52,42 @@ export default {
         },
         {
           name: 'timeline',
-          label: 'Limeline',
+          label: 'Timeline',
           field: 'timeline',
           sortable: true
-                
         }
-
       ],
 
       data: [
         {
-          name: 'Harry xxxxx',
+          name: 'Harry Home',
           timeStart: '8.30',
           timeStop: '11.00',
-          type: 'Xxxxxxxxxx',
+          type: 'Home',
           location: '1202A',
           timeline: 87
         },
         {
-          name: 'Oliver xxxx',
+          name: 'Oliver Home',
           timeStart: '11.30',
           timeStop: '13.20',
-          type: 'xxxxxx',
+          type: 'Home',
           location: '1202A',
           timeline: 54
         },
         {
-          name: 'Jack xxxxx',
+          name: 'Jack Home',
           timeStart: '14.30',
           timeStop: '15.00',
-          type: 'xxxxxxx',
+          type: 'Home',
           location: '1302A',
           timeline: 54
         },
         {
-          name: 'Alfie xxxxx',
+          name: 'Alfie Home',
           timeStart: '15.28',
           timeStop: '16.30',
-          type: 'xxxxxxx',
+          type: 'Home',
           location: '1402A',
           timeline: 54
         }
@@ -98,7 +97,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" >
 .my-sticky-header-table
   /* height or max-height is important */
   height: 490px
