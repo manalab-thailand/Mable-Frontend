@@ -1,22 +1,57 @@
 <template>
   <div>
-    <q-tabs v-model="tab" class="tab-zone">
-      <q-tab name="mails" label="Dairy" />
-      <q-tab name="alarms" label="Weekly" />
-      <q-tab name="movies" label="Monthly" />
+    <q-tabs v-model="tab" class="tab-zone text-info" b>
+      <q-tab name="Dairy" label="Dairy" />
+      <q-tab name="Weekly" label="Weekly" />
+      <q-tab name="Monthly" label="Monthly" />
     </q-tabs>
     <div class="q-pa-md">
-      <q-table
-        class="my-sticky-header-table"
-        title="Timeline"
-        :data="data"
-        :columns="columns"
-        row-key="name"
-        flat
-        bordered
-      />
-    </div>
+    <q-table
+      title="Treats"
+      :data="data"
+      :columns="columns"
+      row-key="name"
+    >
+
+      <template v-slot:header="props">
+        <q-tr :props="props">
+          <q-th auto-width />
+          <q-th
+            v-for="col in props.cols"
+            :key="col.name"
+            :props="props"
+          >
+            {{ col.label }}
+          </q-th>
+        </q-tr>
+      </template>
+
+      <template v-slot:body="props">
+        <q-tr :props="props">
+          <q-td auto-width>
+            <q-btn size="sm" color="accent" round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add'" />
+          </q-td>
+          <q-td
+            v-for="col in props.cols"
+            :key="col.name"
+            :props="props"
+          >
+            {{ col.value }}
+          </q-td>
+        </q-tr>
+        <q-tr v-show="props.expand" :props="props">
+          <q-td colspan="100%">
+            <!-- <div class="text-left">This is expand slot for row above: {{ props.row.name }}.</div> -->
+            <q-item tag="label" to="/timeline">
+                <q-item-section>Timeline : {{ props.row.name }} </q-item-section>
+              </q-item>
+          </q-td>
+        </q-tr>
+      </template>
+
+    </q-table>
   </div>
+</div>
 </template>
 
 <script>
@@ -24,7 +59,7 @@
 export default {
   data () {
     return {
-      tab: 'mails',
+      tab: 'Dairy',
       columns: [
         {
           name: 'name',
@@ -65,7 +100,7 @@ export default {
           timeStop: '11.00',
           type: 'Home',
           location: '1202A',
-          timeline: 87
+          timeline: 11
         },
         {
           name: 'Oliver Home',
