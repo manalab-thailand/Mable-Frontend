@@ -24,7 +24,7 @@
                 color="primary"
                 round
                 to="/timeline"
-               :icon="props.expand ? 'today':'person_pin_circle'"
+               :icon="props.expand ? '':'person_pin_circle'"
               />
             </q-td>
             <q-td v-for="col in props.cols" :key="col.name" :props="props">
@@ -42,17 +42,6 @@ export default {
   data () {
     return {
       tab: 'Dairy',
-      methods: {
-        linkClick (e, go) {
-          e.navigate = false // we choose when we navigate
-
-          // console.log('triggering navigation in 2s')
-          setTimeout(() => {
-            // console.log('navigating as promised 2s ago')
-            go()
-          }, 2000)
-        }
-      },
       columns: [
         {
           name: 'name',
@@ -72,13 +61,15 @@ export default {
         },
         {
           name: 'time-stop',
+          align: 'center',
           label: 'Time Stop',
           field: 'timeStop',
           sortable: true
         },
-        { name: 'type', label: 'Type', field: 'type', sortable: true },
+        { name: 'type', align: 'center', label: 'Type', field: 'type', sortable: true },
         {
           name: 'location',
+          align: 'center',
           label: 'Location',
           field: 'location',
           sortable: true
