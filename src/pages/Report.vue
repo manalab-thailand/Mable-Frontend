@@ -6,13 +6,73 @@
           <div class="icon-zone">
             <i class="fas fa-file-alt"></i>
           </div>
-          <div class="tag-zone">Tag {{}}</div>
-          <div class="info-zone">
-            <p>Name: {{}}</p>
-            <p>Tel: {{}}</p>
-            <p>Type: {{}}</p>
-            <p>Location: {{}}</p>
+          <div class="tag-zone">Tag {{ "1" }}</div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/timeline" >
+                <q-item-section>Timeline</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </q-card-section>
+      </q-card>
+
+      <q-card class="my-card">
+        <q-card-section class="card-zone">
+          <div class="icon-zone">
+            <i class="fas fa-file-alt"></i>
           </div>
+          <div class="tag-zone">Tag {{ "2" }}</div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/timeline">
+                <q-item-section>Timeline</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </q-card-section>
+      </q-card>
+
+      <q-card class="my-card">
+        <q-card-section class="card-zone">
+          <div class="icon-zone">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <div class="tag-zone">Tag {{ "3" }}</div>
+          <q-btn-dropdown
+            class="more-detail"
+            color="white"
+            text-color="primary"
+            label="..."
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" to="/timeline">
+                <q-item-section>Timeline</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </q-card-section>
+      </q-card>
+
+      <q-card class="my-card">
+        <q-card-section class="card-zone">
+          <div class="icon-zone">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <div class="tag-zone">Tag {{ "4" }}</div>
           <q-btn-dropdown
             class="more-detail"
             color="white"
@@ -41,28 +101,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'user-report',
-  userData: [
-    {
-      id: 1,
-      name: 'Yatogami Tohka',
-      tel: '012-345-6789',
-      type: 'Saldanfon',
-      location: '1202A'
-    },
-    {
-      id: 2,
-      name: 'Tobiichi Origami',
-      tel: '987-654-3210',
-      type: 'Metatron',
-      location: '1202A'
-    }
-  ]
-}
-</script>
 
 <style lang="sass" scoped>
 .my-card
