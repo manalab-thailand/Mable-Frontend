@@ -1,67 +1,18 @@
 <template>
-  <div id="user-report">
-    <div class="flex-break">
-      <q-card class="my-card">
-        <q-card-section class="card-zone">
-          <div class="icon-zone">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <div class="tag-zone">Tag {{}}</div>
-          <div class="info-zone">
-            <p>Name: {{}}</p>
-            <p>Tel: {{}}</p>
-            <p>Type: {{}}</p>
-            <p>Location: {{}}</p>
-          </div>
-          <q-btn-dropdown
-            class="more-detail"
-            color="white"
-            text-color="primary"
-            label="..."
-            size="sm"
-          >
-            <q-list dense>
-              <q-item tag="label" to="/timeline-table">
-                <q-item-section>Timeline</q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
-        </q-card-section>
-      </q-card>
-
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-    </div>
-    <div class="grid-container">
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-    </div>
-  </div>
+  <q-page id="tag-button" >
+    <q-card class="my-card bg-positive" >
+      <q-card-section class="card-zone-offine text-center">
+        <div class="icon-zone-add"><q-item tag="label" to="/timeline-table"  ></q-item>
+          <i class="fas fa-plus" ></i>
+        </div>
+        <div class="tag-zone">Report </div>
+      </q-card-section>
+    </q-card>
+  </q-page>
 </template>
 
 <script>
-export default {
-  name: 'user-report',
-  userData: [
-    {
-      id: 1,
-      name: 'Yatogami Tohka',
-      tel: '012-345-6789',
-      type: 'Saldanfon',
-      location: '1202A'
-    },
-    {
-      id: 2,
-      name: 'Tobiichi Origami',
-      tel: '987-654-3210',
-      type: 'Metatron',
-      location: '1202A'
-    }
-  ]
-}
+export default {}
 </script>
 
 <style lang="sass" scoped>
@@ -73,16 +24,32 @@ export default {
   display: flex
   padding: 2rem
 .card-zone
-  background-color: blue
+  background-color: #457b9d
   text-align: center
   height: 100%
+  padding: 0rem
 .icon-zone
-  background-color: white
+  background-color: green
   border-style: solid
   border-radius: 50%
   border-width: 3px
-  color: black
+  color: white
   display: inline-block
+  height: 100px
+  width: 100px
+  margin: 2rem 0rem
+.card-zone-offine
+  background-color: lightgray
+  text-align: center
+  height: 100%
+.icon-zone-offine
+  background-color: white
+  border-style: solid
+  border-color: black
+  border-radius: 50%
+  border-width: 3px
+  color: white
+  display: inline-table
   height: 100px
   width: 100px
   .fas
@@ -91,15 +58,24 @@ export default {
     color: black
     font-size: 50px
     display: inline-block
-.info-zone
-  background-color: lightgray
+.fas
+  padding-top: 1.3rem
+  text-align: center
+  color: white
+  font-size: 50px
   display: inline-block
-  padding: .5rem 1rem
+.tag-zone
+  padding: .5rem 0rem
+  magin-top: 2rem
+  text-align: center
+  font-size: 25px
+.info-zone
+  background-color: #fff
+  display: space-between
+  text-align: center
   color: #333
   border: 2px solid transparent
   transition: 0.3s
-  margin-top: 1rem
-  border-radius: 15px
 p
   margin: 0
 .more-detail

@@ -6,60 +6,53 @@
       <q-tab name="Monthly" label="Monthly" />
     </q-tabs>
     <div class="q-pa-md">
-    <q-table
-      title="Treats"
-      :data="data"
-      :columns="columns"
-      row-key="name"
-    >
+      <q-table title="Timeline" :data="data" :columns="columns" row-key="name">
+        <template v-slot:header="props">
+          <q-tr :props="props">
+            <q-th auto-width />
+            <q-th v-for="col in props.cols" :key="col.name" :props="props">
+              {{ col.label }}
+            </q-th>
+          </q-tr>
+        </template>
 
-      <template v-slot:header="props">
-        <q-tr :props="props">
-          <q-th auto-width />
-          <q-th
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.label }}
-          </q-th>
-        </q-tr>
-      </template>
-
-      <template v-slot:body="props">
-        <q-tr :props="props">
-          <q-td auto-width>
-            <q-btn size="sm" color="accent" round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add'" />
-          </q-td>
-          <q-td
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.value }}
-          </q-td>
-        </q-tr>
-        <q-tr v-show="props.expand" :props="props">
-          <q-td colspan="100%">
-            <!-- <div class="text-left">This is expand slot for row above: {{ props.row.name }}.</div> -->
-            <q-item tag="label" to="/timeline">
-                <q-item-section>Timeline : {{ props.row.name }} </q-item-section>
-              </q-item>
-          </q-td>
-        </q-tr>
-      </template>
-
-    </q-table>
+        <template v-slot:body="props">
+          <q-tr :props="props">
+            <q-td auto-width>
+              <q-btn
+                size="md"
+                color="primary"
+                round
+                to="/timeline"
+               :icon="props.expand ? 'today':'person_pin_circle'"
+              />
+            </q-td>
+            <q-td v-for="col in props.cols" :key="col.name" :props="props">
+              {{ col.value }}
+            </q-td>
+          </q-tr>
+        </template>
+      </q-table>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-
 export default {
   data () {
     return {
       tab: 'Dairy',
+      methods: {
+        linkClick (e, go) {
+          e.navigate = false // we choose when we navigate
+
+          // console.log('triggering navigation in 2s')
+          setTimeout(() => {
+            // console.log('navigating as promised 2s ago')
+            go()
+          }, 2000)
+        }
+      },
       columns: [
         {
           name: 'name',
@@ -77,20 +70,25 @@ export default {
           field: 'timeStart',
           sortable: true
         },
-        { name: 'time-stop', label: 'Time Stop', field: 'timeStop', sortable: true },
+        {
+          name: 'time-stop',
+          label: 'Time Stop',
+          field: 'timeStop',
+          sortable: true
+        },
         { name: 'type', label: 'Type', field: 'type', sortable: true },
         {
           name: 'location',
           label: 'Location',
           field: 'location',
           sortable: true
-        },
-        {
-          name: 'timeline',
-          label: 'Timeline',
-          field: 'timeline',
-          sortable: true
         }
+        // {
+        //   name: 'timeline',
+        //   label: 'Timeline',
+        //   field: 'timeline',
+        //   sortable: true
+        // }
       ],
 
       data: [
@@ -99,32 +97,32 @@ export default {
           timeStart: '8.30',
           timeStop: '11.00',
           type: 'Home',
-          location: '1202A',
-          timeline: 11
+          location: '1202A'
+          // timeline: 11
         },
         {
           name: 'Oliver Home',
           timeStart: '11.30',
           timeStop: '13.20',
           type: 'Home',
-          location: '1202A',
-          timeline: 54
+          location: '1202A'
+          // timeline: 54
         },
         {
           name: 'Jack Home',
           timeStart: '14.30',
           timeStop: '15.00',
           type: 'Home',
-          location: '1302A',
-          timeline: 54
+          location: '1302A'
+          // timeline: 54
         },
         {
           name: 'Alfie Home',
           timeStart: '15.28',
           timeStop: '16.30',
           type: 'Home',
-          location: '1402A',
-          timeline: 54
+          location: '1402A'
+          // timeline: 54
         }
       ]
     }
@@ -132,7 +130,7 @@ export default {
 }
 </script>
 
-<style lang="sass" >
+<style lang="sass">
 .my-sticky-header-table
   /* height or max-height is important */
   height: 490px
