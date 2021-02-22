@@ -10,6 +10,7 @@
       </q-card-section>
       <q-card-section class="q-pt-none text-center">
         {{ "Detail" }}
+        <q-item tag="label" to="/timeline-table"  />
       </q-card-section>
     </q-card>
   </div>
