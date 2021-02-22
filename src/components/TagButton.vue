@@ -1,10 +1,8 @@
 <template>
   <div id="tag-button">
-    <q-card class="my-card bg-positive">
-      <q-card-section class="card-zone-offine text-center">
-        <div class="icon-zone-add">
-          <i class="fas fa-plus"></i>
-        </div>
+    <q-card class="my-card bg-warning">
+      <q-card-section class="text-center text-white">
+          <i class="fas fa-plus icon-zone-add text-white"></i>
         <div class="tag-zone">New tag</div>
       </q-card-section>
     </q-card>

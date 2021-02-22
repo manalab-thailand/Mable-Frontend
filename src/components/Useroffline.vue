@@ -1,12 +1,12 @@
 <template>
   <div id="user-offline">
-    <q-card class="my-card bg-accent">
+    <q-card class="my-card bg-warning">
       <q-card-section class="text-center">
-        <q-icon color="primary" name="fas fa-tag" />
+        <q-icon color="negative" name="fas fa-tag" />
       </q-card-section>
       <q-card-section>
         <div class="row items-center no-wrap text-center">
-          <div class="col">
+          <div class="col text-white">
             <div class="text-h5">{{userData[0].id}}</div>
             <div class="text-h6">{{userData[0].status}}</div>
           </div>
@@ -22,8 +22,8 @@
 
       <q-separator />
 
-      <q-card-actions>
-        <q-btn flat class="center">...</q-btn>
+      <q-card-actions class="">
+        <q-btn flat class="text-white">...</q-btn>
       </q-card-actions>
     </q-card>
   </div>

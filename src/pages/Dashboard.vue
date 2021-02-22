@@ -3,6 +3,7 @@
     <TagButton />
     <UserDisplay />
     <UserOffline />
+    <UserOffline />
   </div>
 </template>
 
