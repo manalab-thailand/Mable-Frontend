@@ -40,13 +40,13 @@
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Name</q-item-label>
-            <q-item-label>John Doe</q-item-label>
+            <q-item-label>{{ tagdata.first_name + ' ' + tagdata.last_name}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Telno</q-item-label>
-            <q-item-label>0899998899</q-item-label>
+            <q-item-label>{{ tagdata.tel }}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
@@ -62,7 +62,7 @@
 
 <script>
 export default {
-  props: ["active"],
+  props: ["tagdata"],
 };
 </script>
 

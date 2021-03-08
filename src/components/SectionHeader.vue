@@ -2,7 +2,7 @@
    <div class="row">
       <div class="col  q-ma-md ">
         <div class="text-h3 text-primary">{{ title }}</div>
-        <div class="text-grey-7">{{ subTitle }}</div>
+        <div class="text-black">{{ subTitle }}</div>
       </div>
     </div>
 </template>
