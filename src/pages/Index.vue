@@ -6,7 +6,6 @@
     ></section-header>
     <div class="row q-gutter-col-md">
       <div class="col-md-2 col-12" v-for="tag in tags" :key="tag.tag_id">
-        {{ tag.tag_address }}
         <device-card :tagdata="tag"></device-card>
       </div>
     </div>

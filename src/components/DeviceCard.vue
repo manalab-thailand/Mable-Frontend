@@ -10,7 +10,7 @@
       </div>    
         </div>  
         <div class="col">
-          <div class="text-h6">Guest #1</div>
+          <div class="text-h6">Tag #{{ tagdata.tag_id }}</div>
           <div class="text-subtitle2"><q-badge color="green-8" label="1202A" /></div>
           
         </div>
@@ -47,6 +47,12 @@
           <q-item-section>
             <q-item-label overline>Telno</q-item-label>
             <q-item-label>{{ tagdata.tel }}</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item v-ripple>
+          <q-item-section>
+            <q-item-label overline>Tag ID</q-item-label>
+            <q-item-label>{{ tagdata.tag_address }}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
