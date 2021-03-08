@@ -2,8 +2,8 @@
   <q-item
     clickable
     tag="a"
-    target=""
     :href="link"
+    class="text-white"
   >
     <q-item-section
       v-if="icon"
@@ -14,6 +14,9 @@
 
     <q-item-section>
       <q-item-label>{{ title }}</q-item-label>
+      <q-item-label caption class="text-grey-5">
+        {{ caption }}
+      </q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -26,10 +29,17 @@ export default {
       type: String,
       required: true
     },
+
+    caption: {
+      type: String,
+      default: ''
+    },
+
     link: {
       type: String,
       default: '#'
     },
+
     icon: {
       type: String,
       default: ''
