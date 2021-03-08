@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
+    <!-- <q-header class="q-ma-sm bg-blue-grey-1">
+      <q-toolbar class="bg-primary-gradient rounded-borders-10 shadow-5">
         <q-btn
           flat
           dense
@@ -11,102 +11,78 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title> Mable Admin Dashboard</q-toolbar-title>
       </q-toolbar>
-    </q-header>
+    </q-header> -->
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      bordered
-      content-class="bg-primary"
+      content-class="bg-blue-grey-1"
+      class="bg-space-gradient"
     >
-      <q-list>
-        <q-item-label
-          header
-          class="text-head-center"
-        >
-          <img class="profile-image" src="~assets/twitter_icon2.jpg" alt="no img">
-        </q-item-label>
-
-           <q-tabs
-            v-model="tab"
-            vertical
-            class="text-info"
-            >
+      <div class="q-ma-sm rounded-borders-20 bg-primary-gradient fixed-full shadow-15">
+        <div class="text-center q-ma-xl">
+          <q-avatar square size="80px">
+            <img src="logo.png" />
+          </q-avatar>
+          <div class="text-h5 text-white q-mt-sm">Mable</div>
+          <div class="text-white text-grey-5">Smart BLE Scanner Network</div>
+        </div>
+        <q-list>
           <EssentialLink
             v-for="link in essentialLinks"
             :key="link.title"
             v-bind="link"
-            class="text-center"
           />
-        </q-tabs>
+        </q-list>
+      </div>
+    </q-drawer>
 
-    </q-list>
-  </q-drawer>
-
-    <q-page-container>
+    <q-page-container class="bg-blue-grey-1">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from "components/EssentialLink.vue";
 
 const linksData = [
   {
-    title: 'Dashboard',
-    link: '#/dashboard'
+    title: "Home",
+    caption: "แดชบอร์ดภาพรวมระบบ",
+    icon: "fas fa-home",
+    link: "https://quasar.dev",
   },
   {
-    title: 'Map',
-    link: '#/map'
+    title: "Map",
+    caption: "แผนที่ติดตามตำแหน่งผู้ใช้งาน",
+    icon: "fas fa-map",
+    link: "https://github.com/quasarframework",
   },
   {
-    title: 'Report',
-    link: '#/report'
+    title: "Reports",
+    caption: "รายงานการใช้งาน",
+    icon: "fas fa-chart-bar",
+    link: "https://chat.quasar.dev",
   },
   {
-    title: 'Log out',
-    link: '/'
-  }
-]
+    title: "Settings",
+    caption: "ตั้งค่า",
+    icon: "fas fa-sliders-h",
+    link: "https://awesome.quasar.dev",
+  },
+];
 
 export default {
-  name: 'MainLayout',
+  name: "MainLayout",
   components: { EssentialLink },
-  data () {
+  data() {
     return {
       leftDrawerOpen: false,
       essentialLinks: linksData,
-      tab: 'mails'
-    }
-  }
-}
+    };
+  },
+};
 </script>
-
-<style lang="scss" scoped>
-$center: center;
-$bold: bold;
-$inset: inset;
-$menu-bar-color: lightgray;
-  .profile-image{
-    border-radius: 50%;
-    width:50%;
-  }
-  .text-center{
-    text-align: $center;
-    border-bottom-style: $inset;
-    border-bottom-width: 1px;
-    border-color: $menu-bar-color;
-  }
-  .text-head-center{
-    text-align: $center;
-    text-shadow: 2px;
-  }
-</style>
