@@ -22,10 +22,10 @@
                 <q-item clickable>
                   <q-item-section @click="alert = true">View detail</q-item-section>
                 </q-item>
-                <q-item clickable>
+                <q-item clickable to="/map">
                   <q-item-section>Locate on map</q-item-section>
                 </q-item>
-                <q-item clickable>
+                <q-item clickable @click="confirm = true">
                   <q-item-section>Return the tag</q-item-section>
                 </q-item>
               </q-list>
@@ -82,6 +82,18 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    <q-dialog v-model="confirm">
+      <q-card>
+        <q-card-section class="row items-center">
+          <span class="q-ml-sm">Are you sure to resrt.</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Reset" color="green-6" v-close-popup />
+          <q-btn flat label="Cancel" color="red-8" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-card>
   
 </template>
@@ -92,7 +104,7 @@ export default {
   data () {
     return {
       alert: false,
-      address: ''
+      confirm: false,
     }
   }
 };

@@ -6,15 +6,9 @@
     ></section-header>
     <div class="row">
       <div class="col  q-ma-md ">
-        <div class="text-h4 text-primary" style=" margin-left: 30px;">Frool 1</div>
+        <div class="text-h4 text-primary" style=" margin-left: 30px;">Floor 1</div>
       </div>
     </div>
-    <!-- <q-img
-      :src="~assets/logo.jpg"
-      :ratio="16/9"
-      spinner-color="primary"
-      spinner-size="82px"
-    /> -->
      <img class="profile-image" src="~assets/map_1.jpg" alt="no img">
   </q-page>
 </template>

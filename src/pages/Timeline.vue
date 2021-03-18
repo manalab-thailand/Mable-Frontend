@@ -9,7 +9,8 @@
       <q-card class="col-4 rounded-borders-10 shadow-5" id="my-card-1">
         <q-card-section>
         <div class="text-h6">Name : John Doe</div>
-        <div class="text-subtitle2">Telophone : { 089999999 }</div>
+        <div class="text-subtitle2">Telophone : 089999999</div>
+        <div class="text-subtitle2">ID Civilication : 1900000000000 </div>
       </q-card-section>
        <q-card-section>
         Type : Electrician<br>
