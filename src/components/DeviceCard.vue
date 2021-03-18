@@ -20,7 +20,7 @@
             <q-menu cover auto-close>
               <q-list>
                 <q-item clickable>
-                  <q-item-section>View detail</q-item-section>
+                  <q-item-section @click="alert = true">View detail</q-item-section>
                 </q-item>
                 <q-item clickable>
                   <q-item-section>Locate on map</q-item-section>
@@ -51,18 +51,50 @@
         </q-item>
         <q-item v-ripple>
           <q-item-section>
+            <q-item-label overline>Organization</q-item-label>
+            <q-item-label>Electrician</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item v-ripple>
+          <q-item-section>
             <q-item-label overline>Contact person</q-item-label>
             <q-item-label>Mr. Teerapong</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
     </q-card-section>
+    <q-dialog v-model="alert">
+      <q-card>
+        <q-card-section>
+          <div class="text-h5">Detail</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none" style="width: 350px; margin:15px">
+          Name : John Doe <br>
+          Tel : 0899999999<br>
+          ID civilizecation : 1900000000000<br>
+          Type : Eletecx Mach<br>
+          Contact Person : Mr.Teerapong<br>
+          Location : 1202A
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-card>
+  
 </template>
 
 <script>
 export default {
   props: ["active"],
+  data () {
+    return {
+      alert: false,
+      address: ''
+    }
+  }
 };
 </script>
 

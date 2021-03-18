@@ -1,54 +1,11 @@
 <template>
+
   <q-page class="q-pa-sm">
     <section-header
       title="Report"
       subTitle="แสดงข้อมูลการใช้งานของ User"
     ></section-header>
-    
   </q-page>
-<!-- <div id="user-report">
-    <div class="flex-break">
-      <q-card class="my-card">
-        <q-card-section class="card-zone">
-          <div class="icon-zone">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <div class="tag-zone">Tag {{}}</div>
-          <div class="info-zone">
-            <p>Name: {{}}</p>
-            <p>Tel: {{}}</p>
-            <p>Type: {{}}</p>
-            <p>Location: {{}}</p>
-          </div>
-          <q-btn-dropdown
-            class="more-detail"
-            color="white"
-            text-color="primary"
-            label="..."
-            size="sm"
-          >
-            <q-list dense>
-              <q-item tag="label" to="/timeline">
-                <q-item-section>Timeline</q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
-        </q-card-section>
-      </q-card>
-
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-    </div>
-    <div class="grid-container">
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-    </div>
-  </div> -->
-
-  
 </template>
 
 <script>
