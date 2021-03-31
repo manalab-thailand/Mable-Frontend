@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card bg-indigo-1 rounded-borders-20 shadow-20 q-ma-sm">
+  <q-card class="my-card">
     <q-card-section class="text-primary">
       <div class="row items-center no-wrap">
         <div class="col">
@@ -18,14 +18,8 @@
           <q-btn color="primary" round flat icon="more_vert">
             <q-menu cover auto-close>
               <q-list>
-                <q-item clickable>
-                  <q-item-section @click="alert = true">View detail</q-item-section>
-                </q-item>
-                <q-item clickable to="/map">
-                  <q-item-section>Locate on map</q-item-section>
-                </q-item>
-                <q-item clickable @click="confirm = true">
-                  <q-item-section>Return the tag</q-item-section>
+                <q-item to="/timeline" clickable>
+                  <q-item-section >Check TimeLine</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
@@ -63,50 +57,14 @@
       </q-list>
     </q-card-section>
     
-    <q-dialog v-model="alert">
-      <q-card>
-        <q-card-section>
-          <div class="text-h5">Detail</div>
-        </q-card-section>
-        <q-card-section class="q-pt-none" style="width: 350px; margin:15px">
-          Name : John Doe <br>
-          Tel : 0899999999<br>
-          ID civilizecation : 1900000000000<br>
-          Type : Eletecx Mach<br>
-          Contact Person : Mr.Teerapong<br>
-          Location : 1202A
-        </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn flat label="OK" color="primary" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-    <q-dialog v-model="confirm">
-      <q-card>
-        <q-card-section class="row items-center">
-          <span class="q-ml-sm">Are you sure to resrt.</span>
-        </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn flat label="Reset" color="green-6" v-close-popup />
-          <q-btn flat label="Cancel" color="red-8" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
   </q-card>
+  
   
 </template>
 
 <script>
 export default {
-  props: ["active"],
-  data () {
-    return {
-      alert: false,
-      confirm: false,
-    }
-  }
+  props: ["active"]
 };
 </script>
 

@@ -93,7 +93,11 @@
       </q-tab-panel>
 
       <q-tab-panel name="Select Date">
-        <div class="row-12">
+        <div class="row">
+          <!-- <div class="row">Enter Name</div>
+          <div class="q-pa-md" style="width: 350px">
+            <q-input v-model="text"/>
+          </div> -->
           <div class="row-4">Select Date</div>
           <div class="q-pa-md" style="max-width: 300px">
             <q-input filled v-model="date" mask="date" :rules="['date']">
@@ -171,6 +175,7 @@ export default {
     return {
       tab: "Dairy",
       date: "2021/03/18",
+      text: "",
       columns: [
         {
           name: "name",
