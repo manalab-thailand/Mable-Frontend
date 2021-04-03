@@ -10,7 +10,7 @@
       </div>    
         </div>  
         <div class="col">
-          <div class="text-h6">Guest #1</div>
+          <div class="text-h6">Guest #{{id}}</div>
           <div class="text-subtitle2"><q-badge color="green-8" label="1202A" /></div>
         </div>
 
@@ -39,19 +39,19 @@
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Name</q-item-label>
-            <q-item-label>John Doe</q-item-label>
+            <q-item-label>{{fname +' '+lname}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Telno</q-item-label>
-            <q-item-label>0899998899</q-item-label>
+            <q-item-label>{{ tel }}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Organization</q-item-label>
-            <q-item-label>Electrician</q-item-label>
+            <q-item-label>{{ category}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
@@ -69,10 +69,10 @@
           <div class="text-h5">Detail</div>
         </q-card-section>
         <q-card-section class="q-pt-none" style="width: 350px; margin:15px">
-          Name : John Doe <br>
-          Tel : 0899999999<br>
-          ID civilizecation : 1900000000000<br>
-          Type : Eletecx Mach<br>
+          Name : {{fname +' '+lname}} <br>
+          Tel : {{ tel }}<br>
+          ID civilizecation : 19000000000 <br>
+          Type : {{ category}}<br>
           Contact Person : Mr.Teerapong<br>
           Location : 1202A
         </q-card-section>
@@ -100,7 +100,7 @@
 
 <script>
 export default {
-  props: ["active"],
+   props: ['id','fname','lname','tel','category'],
   data () {
     return {
       alert: false,
