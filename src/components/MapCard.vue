@@ -10,15 +10,15 @@
       </div>    
         </div>  
         <div class="col">
-          <div class="text-h6">Guest #1</div>
-          <div class="text-subtitle2"><q-badge color="green-8" label="1202A" /></div>
+          <div class="text-h6">Guest #{{id}}</div>
+          <div class="text-subtitle2"><q-badge color="green-8" :label="room" /></div>
         </div>
 
         <div class="col-auto">
           <q-btn color="primary" round flat icon="more_vert">
             <q-menu cover auto-close>
               <q-list>
-                <q-item to="/timeline" clickable>
+                <q-item :to="'/timeline/'+id_visitor" clickable>
                   <q-item-section >Check TimeLine</q-item-section>
                 </q-item>
               </q-list>
@@ -33,19 +33,19 @@
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Name</q-item-label>
-            <q-item-label>John Doe</q-item-label>
+            <q-item-label>{{fname+' '+lname}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Telno</q-item-label>
-            <q-item-label>0899998899</q-item-label>
+            <q-item-label>{{tel}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Organization</q-item-label>
-            <q-item-label>Electrician</q-item-label>
+            <q-item-label>{{category}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
@@ -64,8 +64,10 @@
 
 <script>
 export default {
-  props: ["active"]
+  props: ['id_visitor','id','fname','lname','tel','category','room'],
+
 };
+
 </script>
 
 <style>

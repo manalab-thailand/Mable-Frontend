@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card bg-indigo-1 rounded-borders-20 shadow-20 q-ma-sm">
+  <q-card  class="my-card bg-indigo-1 rounded-borders-20 shadow-20 q-ma-sm">
     <q-card-section class="text-primary">
       <div class="row items-center no-wrap">
         <div class="col">
@@ -9,7 +9,7 @@
         </q-avatar>
       </div>
       <div class="col">
-          <div class="text-h5 text-center">Tag 2</div>
+          <div class="text-h5 text-center">Tag #{{id}}</div>
           <div class="text-subtitle2 text-center"><q-badge color="red-8" label="Disconnected" /></div>
           
         </div>    
@@ -23,7 +23,7 @@
           <q-btn color="primary" round flat icon="more_vert">
             <q-menu cover auto-close>
               <q-list>
-                <q-item to="/register" clickable class="text-center">
+                <q-item :to="'/register/' +id" clickable class="text-center">
                   <q-item-section >Register</q-item-section>
                 </q-item>
               </q-list>
@@ -38,7 +38,7 @@
 <script>
 
 export default {
-  props: ["active"],
+  props: ["id"],
 };
 </script>
 

@@ -28,7 +28,7 @@ const routes = [
     ]
   },
   {
-    path: '/register',
+    path: '/register/:id',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Register.vue') }
@@ -49,10 +49,10 @@ const routes = [
     ]
   },
   {
-    path: '/timeline',
+    path: '/timeline/:id',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/timeline.vue') }
+      { path: '', component: (id) => import('pages/timeline.vue') }
     ]
   },
 
@@ -61,7 +61,7 @@ const routes = [
   {
     path: '*',
     component: () => import('pages/Error404.vue')
-  }
+  },
 ]
 
 export default routes

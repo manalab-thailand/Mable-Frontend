@@ -9,6 +9,7 @@
       <q-tab class="text-orange" name="Monthly" label="Monthly" />
       <q-tab class="text-teal" name="Select Date" label="Select Date" />
     </q-tabs>
+
     <q-tab-panels
       v-model="tab"
       animated
@@ -16,11 +17,12 @@
       transition-next="fade"
       style="background-color: #eceff1"
     >
+      <!-- ============================================================================================================================== -->
       <q-tab-panel name="Dairy">
         <div class="q-pa-md">
           <q-table
             title="Timeline - Dairy 18/03/2021"
-            :data="data"
+            :data="list_day"
             :columns="columns"
             row-key="name"
             class="rounded-borders-10 shadow-5"
@@ -41,7 +43,7 @@
                     size="md"
                     color="primary-gradient"
                     round
-                    to="/timeline"
+                    :to="'/timeline/' + props.row.id"
                     :icon="props.expand ? '' : 'person_pin_circle'"
                   />
                 </q-td>
@@ -53,12 +55,12 @@
           </q-table>
         </div>
       </q-tab-panel>
-
+      <!-- ================================================================================================================== -->
       <q-tab-panel name="Monthly">
         <div class="q-pa-md">
           <q-table
             title="Timeline - Monthry 03/2021"
-            :data="data"
+            :data="list2"
             :columns="columns"
             row-key="name"
             class="rounded-borders-10 shadow-5"
@@ -80,6 +82,7 @@
                     color="primary-gradient"
                     round
                     to="/timeline"
+                    :id="1"
                     :icon="props.expand ? '' : 'person_pin_circle'"
                   />
                 </q-td>
@@ -91,7 +94,7 @@
           </q-table>
         </div>
       </q-tab-panel>
-
+      <!-- ================================================================================================================================= -->
       <q-tab-panel name="Select Date">
         <div class="row">
           <!-- <div class="row">Enter Name</div>
@@ -128,7 +131,7 @@
         <div class="q-pa-md">
           <q-table
             title="Timeline - Date 18/03/2021"
-            :data="data"
+            :data="list2"
             :columns="columns"
             row-key="name"
             class="rounded-borders-10 shadow-5"
@@ -148,6 +151,7 @@
                     size="md"
                     color="primary-gradient"
                     round
+                    :id="0"
                     to="/timeline"
                     :icon="props.expand ? '' : 'person_pin_circle'"
                   />
@@ -163,9 +167,10 @@
     </q-tab-panels>
   </q-page>
 </template>
-
+// =========================================================================================================================================
 <script>
 import SectionHeader from "../components/SectionHeader.vue";
+import { axios } from "boot/axios";
 
 export default {
   components: {
@@ -175,6 +180,9 @@ export default {
     return {
       tab: "Dairy",
       date: "2021/03/18",
+      list: undefined,
+      list2: undefined,
+      list_day: [],
       text: "",
       columns: [
         {
@@ -197,14 +205,14 @@ export default {
           name: "time-start",
           align: "center",
           label: "Time Start",
-          field: "timeStart",
+          field: "time_start",
           sortable: true,
         },
         {
           name: "time-stop",
           align: "center",
           label: "Time Stop",
-          field: "timeStop",
+          field: "time_stop",
           sortable: true,
         },
         {
@@ -222,82 +230,30 @@ export default {
           sortable: true,
         },
       ],
-
-      data: [
-        {
-          name: "Harry Home",
-          date: "03/18/2021",
-          timeStart: "8.30",
-          timeStop: "11.00",
-          type: "Electrician",
-          location: "1202A",
-          // timeline: 11
-        },
-        {
-          name: "Oliver Home",
-          date: "03/18/2021",
-          timeStart: "11.30",
-          timeStop: "13.20",
-          type: "Electrician",
-          location: "1202A",
-          // timeline: 54
-        },
-        {
-          name: "Jack Home",
-          date: "03/18/2021",
-          timeStart: "14.30",
-          timeStop: "15.00",
-          type: "Electrician",
-          location: "1302A",
-          // timeline: 54
-        },
-        {
-          name: "Alfie Home",
-          date: "03/18/2021",
-          timeStart: "15.28",
-          timeStop: "16.30",
-          type: "Electrician",
-          location: "1402A",
-          // timeline: 54
-        },
-        {
-          name: "Harry Home",
-          date: "03/18/2021",
-          timeStart: "8.30",
-          timeStop: "11.00",
-          type: "Electrician",
-          location: "1202A",
-          // timeline: 11
-        },
-        {
-          name: "Oliver Home",
-          date: "03/18/2021",
-          timeStart: "11.30",
-          timeStop: "13.20",
-          type: "Electrician",
-          location: "1202A",
-          // timeline: 54
-        },
-        {
-          name: "Jack Home",
-          date: "03/18/2021",
-          timeStart: "14.30",
-          timeStop: "15.00",
-          type: "Electrician",
-          location: "1302A",
-          // timeline: 54
-        },
-        {
-          name: "Alfie Home",
-          date: "03/18/2021",
-          timeStart: "15.28",
-          timeStop: "16.30",
-          type: "Electrician",
-          location: "1402A",
-          // timeline: 54
-        },
-      ],
     };
+  },
+  async mounted() {
+    let resp = await axios.get("http://mean.psu.ac.th:3000/api/visitors");
+    this.list = resp.data.result.rows;
+    // console.warn(resp.data.result.rows);
+    let resp2 = await axios.get("http://localhost:3030/api/history");
+    this.list2 = resp2.data.result.rows;
+    // console.warn(resp.data.result.rows);
+    for (var i = 0; i < 10; i++) {
+      var id = this.list2[i].id_visitor;
+      const newItem = {
+        id: id - 1,
+        name: this.list[id - 1].first_name + " " + this.list[id - 1].last_name,
+        date: this.list2[i].date,
+        time_start: this.list2[i].time_start,
+        time_stop: this.list2[i].time_stop,
+        type: this.list[id - 1].category,
+        location: this.list2[i].room,
+      };
+      this.list_day.push(newItem);
+    }
+
+    console.warn(this.list_day);
   },
 };
 </script>

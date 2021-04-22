@@ -1,161 +1,95 @@
 <template>
-<q-page class="q-pa-sm">
-  <section-header
+  <q-page class="q-pa-sm">
+    <section-header
       title="Time Line"
       subTitle="แสดงข้อมูลการใช้งานของ User"
     ></section-header>
     <div class="row justify-evenly">
-      
-      <q-card class="col-4 rounded-borders-10 shadow-5" id="my-card-1">
-        <q-card-section>
-        <div class="text-h6">Name : John Doe</div>
-        <div class="text-subtitle2">Telophone : 089999999</div>
-        <div class="text-subtitle2">ID Civilication : 1900000000000 </div>
-      </q-card-section>
-       <q-card-section>
-        Type : Electrician<br>
-        Location : 1202A<br>
-        Contact person : Mr. Teerapong
-      </q-card-section>
-      </q-card>
-      
+      <div v-for="itemz in list" :key="itemz.visitor_id">
+        <div v-if="itemz.visitor_id == id">
+          <info-card
+            :fname="itemz.first_name"
+            :lname="itemz.last_name"
+            :tel="itemz.tel"
+            :id_civiliz="itemz.id_civiliz"
+            :category="itemz.category"
+          />
+        </div>
+      </div>
       <q-card class="col-3 rounded-borders-10 shadow-5" id="my-card-2">
-        <q-icon color="blue" id="icon" class="center" name="fas fa-map-marked" />
+        <q-icon
+          color="blue"
+          id="icon"
+          class="center"
+          name="fas fa-map-marked"
+        />
         <q-card-section class="text-h4 text-center">
-               <div >Tag 1</div>
+          <div>Tag {{ this.id }}</div>
         </q-card-section>
       </q-card>
     </div>
-    <q-timeline color="secondary" style="padding:2rem;">
-      <q-timeline-entry heading>
-        Timeline heading
-      </q-timeline-entry>
+    <q-timeline color="secondary" style="padding: 2rem">
+      <q-timeline-entry heading> Timeline </q-timeline-entry>
 
-      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+      <div v-for="items in list2" :key="items.id_history">
+        <div v-if="items.id_visitor == id">
+          <div v-for="item in list" :key="item.visitor_id">
+            <q-timeline-entry v-if="item.visitor_id == id">
+              <template v-slot:title>
+                {{ items.room + " " + items.id_history }}
+              </template>
+              <template v-slot:subtitle>
+                {{ items.date }}
+              </template>
+              <div>Time : {{ items.time_start + " - " + items.time_stop }}</div>
+            </q-timeline-entry>
+          </div>
         </div>
-      </q-timeline-entry>
-
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 21, 1986"
-        icon="delete"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </q-timeline-entry>
-
-      <q-timeline-entry heading>
-        November, 2017
-      </q-timeline-entry>
-
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        avatar="https://cdn.quasar.dev/img/avatar2.jpg"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </q-timeline-entry>
-
-      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </q-timeline-entry>
-
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        color="orange"
-        icon="done_all"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </q-timeline-entry>
-
-      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </q-timeline-entry>
-
-      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </q-timeline-entry>
+      </div>
     </q-timeline>
-</q-page>
- 
+  </q-page>
 </template>
 
 <script>
 import SectionHeader from "../components/SectionHeader.vue";
-  
+import InfoCard from "../components/InfoCard.vue";
+import { axios } from "boot/axios";
 export default {
   components: {
-    SectionHeader
+    SectionHeader,
+    InfoCard,
   },
-}
+
+  data() {
+    return {
+      id: this.$route.params.id,
+      list: undefined,
+      list2: undefined,
+    };
+  },
+  mounted() {
+    axios.get("http://localhost:3030/api/visitors").then((resp) => {
+      this.list = resp.data.result.rows;
+      console.warn(resp.data.result.rows);
+    }),
+      axios.get("http://localhost:3030/api/history").then((resp) => {
+        this.list2 = resp.data.result.rows;
+        console.warn(resp.data.result.rows);
+        console.warn(this.id);
+      });
+  },
+};
 </script>
 
 <style lang="sass" scoped>
 #my-card-1
     height: 100%
-    padding:24px
+    padding: 24px
 #my-card-2
-    padding:30px
+    padding: 30px
     height: 100%
 #icon
     font-size: 7em
     display: inline-block
     width: 100%
-
 </style>

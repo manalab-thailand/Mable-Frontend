@@ -7,7 +7,15 @@
   >
 
    <q-popup-proxy class="rounded-borders-20">
-           <Map-card></Map-card>
+           <Map-card
+           :id_visitor="id_visitor"
+           :id='id'
+           :fname='fname'
+           :lname='lname'
+           :tel='tel'
+           :category='category'
+           :room='room'
+           ></Map-card>
       </q-popup-proxy>
   </q-icon>
 </template>
@@ -15,7 +23,7 @@
 <script>
 import MapCard from "../components/MapCard.vue"
 export default {
-   props: ['tops','lefts'],
+   props: ['id_visitor','id','fname','lname','tel','category','room'],
    components: {
     MapCard
   },
