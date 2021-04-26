@@ -72,14 +72,6 @@
                   />
                 </div>
               </div>
-              <!-- <div class="row" id_civiliz="top">
-        <div class="col-2">
-          Location
-        </div>
-        <div class="col-8">
-          <q-input v-model="posts.Location" label="Location to contract" />
-        </div>
-      </div> -->
               <div class="row justify-end" id_civiliz="topper">
                 <div class="col-3">
                   <!-- <q-btn color="primary-gradient" icon="check" to="/index" label="OK" clickable /> -->
@@ -127,7 +119,7 @@ export default {
         taguse_id: this.$route.params.id,
         time_start: moment().locale("th").format("YYYY-MM-DD hh:mm:ss"),
         time_stop: moment().locale("th").format("YYYY-MM-DD hh:mm:ss"),
-        visitor_id: '',
+        visitor_id: "",
       },
       id: this.$route.params.id,
       list: undefined,
@@ -137,14 +129,14 @@ export default {
     let resp = await axios.get("http://localhost:3030/api/visitors");
     this.count = resp.data.result.rows.length;
     this.list = resp.data.result.rows;
-    console.warn(this.list[this.count-1].visitor_id);
-    this.posts.visitor_id = this.list[this.count-1].visitor_id+1;
+    console.warn(this.list[this.count - 1].visitor_id);
+    this.posts.visitor_id = this.list[this.count - 1].visitor_id + 1;
   },
   methods: {
     async add_data() {
       console.warn(this.posts);
-      
-      let result1 = await axios.put("http://localhost:3030/api/taguse/" + this.$route.params.id,
+      let result1 = await axios.put(
+        "http://localhost:3030/api/taguse/" + this.$route.params.id,
         {
           taguse_id: this.$route.params.id,
           time_start: this.posts.time_start,
@@ -160,6 +152,7 @@ export default {
           tel: this.posts.tel,
           category: this.posts.category,
           id_civiliz: this.posts.id_civiliz,
+          contract: this.posts.Preson
         },
       ]);
       console.warn(result);

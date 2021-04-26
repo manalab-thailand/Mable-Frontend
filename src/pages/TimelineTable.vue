@@ -233,12 +233,16 @@ export default {
     };
   },
   async mounted() {
+
     let resp = await axios.get("http://mean.psu.ac.th:3000/api/visitors");
     this.list = resp.data.result.rows;
-    // console.warn(resp.data.result.rows);
+    console.warn("Visitor ");
+    console.warn(resp.data.result.rows);
+
     let resp2 = await axios.get("http://localhost:3030/api/history");
     this.list2 = resp2.data.result.rows;
     // console.warn(resp.data.result.rows);
+
     for (var i = 0; i < 10; i++) {
       var id = this.list2[i].id_visitor;
       const newItem = {
@@ -252,7 +256,7 @@ export default {
       };
       this.list_day.push(newItem);
     }
-
+    console.warn("this day");
     console.warn(this.list_day);
   },
 };
