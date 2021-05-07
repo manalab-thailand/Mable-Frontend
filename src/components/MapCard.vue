@@ -65,7 +65,6 @@
 <script>
 export default {
   props: ['id_visitor','id','fname','lname','tel','category','room'],
-
 };
 
 </script>

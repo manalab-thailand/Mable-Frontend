@@ -10,10 +10,10 @@
           </div>
         </div>
         <div class="col">
-                <div class="text-h6">Guest #{{ id }}</div>
-                <div class="text-subtitle2">
-                  <q-badge color="green-8" :label="location" />
-                </div>
+          <div class="text-h6">Guest #{{ id }}</div>
+          <div class="text-subtitle2">
+            <q-badge color="green-8" :label="location" />
+          </div>
         </div>
 
         <div class="col-auto">
@@ -61,7 +61,7 @@
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Contact person</q-item-label>
-            <q-item-label>{{contract}}</q-item-label>
+            <q-item-label>{{ contract }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -77,7 +77,7 @@
           Tel : {{ tel }}<br />
           ID civilizecation : 19000000000 <br />
           Type : {{ category }}<br />
-          Contact Person : {{contract}}<br />
+          Contact Person : {{ contract }}<br />
         </q-card-section>
 
         <q-card-actions align="right">
@@ -111,7 +111,17 @@
 const moment = require("moment");
 import { axios } from "boot/axios";
 export default {
-  props: ["id", "fname", "lname","contract", "tel", "category", "location",],
+  props: [
+    "id",
+    "fname",
+    "lname",
+    "contract",
+    "tel",
+    "category",
+    "location",
+    "taguse_id",
+    "tag_address"
+  ],
   data() {
     return {
       alert: false,
@@ -121,17 +131,21 @@ export default {
 
   methods: {
     async resetTag() {
-      console.log(this.id),
-        await axios
-          .put("http://localhost:3030/api/taguse/" + this.id, {
-            taguse_id: '"' + this.id + '"',
-            time_start: "2021-02-10 15:29:44",
-            time_stop: "2021-02-10 15:29:44",
-            visitor_id: 0,
-          })
-          .then((result) => {
-            console.log(result);
-          });
+      console.log(this.id);
+      await axios
+        .put("http://localhost:3030/api/taguse/" + this.taguse_id, {
+          time_stop: moment().format(),
+        })
+        .then((result) => {
+          console.log(result);
+        });
+      let result2 = await axios.post("http://localhost:3030/api/scanlog", [
+        {
+          device_address: this.tag_address,
+          scanner_id: "7DA280B4-42AA-4DD7-B090-481BCF1048B9",
+        },
+      ]);
+      console.warn(result2);
     },
   },
 };

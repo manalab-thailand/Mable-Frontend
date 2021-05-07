@@ -50,6 +50,7 @@
                     :to="'/timeline/' + props.row.id"
                     :icon="props.expand ? '' : 'person_pin_circle'"
                   />
+                  {{props.row.id}}
                 </q-td>
                 <q-td v-for="col in props.cols" :key="col.name" :props="props">
                   {{ col.value }}
@@ -152,9 +153,10 @@
                     color="primary-gradient"
                     round
                     :id="0"
-                    to="/timeline"
+                    :to="'/timeline/' + props.row.id"
                     :icon="props.expand ? '' : 'person_pin_circle'"
                   />
+                  {{ props.row.id}}
                 </q-td>
                 <q-td v-for="col in props.cols" :key="col.name" :props="props">
                   {{ col.value }}
@@ -180,7 +182,7 @@ export default {
   data() {
     return {
       tab: "Dairy",
-      date: "2021/03/18",
+      date: moment().format("YYYY/MM/DD"),
       list: undefined,
       list5: undefined,
       list_month: [],
@@ -264,8 +266,8 @@ export default {
           for (var k = 0; k < this.list4.length; k++) {
             if (
               this.list2[i].tag_address == this.list4[k].device_address &&
-              moment(this.list2[i].time_stop).format("YYYY-MM-DD hh:mm") ==
-                moment(this.list4[k].scan_timestamp).format("YYYY-MM-DD hh:mm")
+              moment(this.list2[i].time_stop).format("YYYY-MM-DD hh:mm:ss") ==
+                moment(this.list4[k].scan_timestamp).format("YYYY-MM-DD hh:mm:ss")
             ) {
               for (var l = 0; l < this.list3.length; l++) {
                 if (this.list4[k].scanner_id == this.list3[l].scanner_address) {
@@ -366,7 +368,6 @@ export default {
           };
           this.list_select.push(newItems);
         }
-        
       }
       console.warn(this.list_select);
     },
