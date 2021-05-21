@@ -5,12 +5,8 @@
       subTitle="แสดงข้อมูลการใช้งานของ Users"
     ></section-header>
     <q-tabs v-model="tab" class="q-mb-lg">
-      <q-tab class="text-purple" name="Dairy" label="Dairy"  />
-      <q-tab
-        class="text-orange"
-        name="Monthly"
-        label="Monthly"
-      />
+      <q-tab class="text-purple" name="Dairy" label="Dairy" />
+      <q-tab class="text-orange" name="Monthly" label="Monthly" />
       <q-tab class="text-teal" name="Select Date" label="Select Date" />
     </q-tabs>
 
@@ -21,11 +17,11 @@
       transition-next="fade"
       style="background-color: #eceff1"
     >
-      <!-- ============================================================================================================================== -->
+      <!-- =================================================== Print Day ==================================================================== -->
       <q-tab-panel name="Dairy">
         <div class="q-pa-md">
           <q-table
-            title="Timeline - Dairy 13/01/2021"
+            :title="`Timeline Dairy - ` + this.date"
             :data="list_day"
             :columns="columns"
             row-key="name"
@@ -50,7 +46,6 @@
                     :to="'/timeline/' + props.row.id"
                     :icon="props.expand ? '' : 'person_pin_circle'"
                   />
-                  {{props.row.id}}
                 </q-td>
                 <q-td v-for="col in props.cols" :key="col.name" :props="props">
                   {{ col.value }}
@@ -60,11 +55,11 @@
           </q-table>
         </div>
       </q-tab-panel>
-      <!-- ================================================================================================================== -->
+      <!-- =========================================== Print Mounthly =========================================================== -->
       <q-tab-panel name="Monthly">
         <div class="q-pa-md">
           <q-table
-            title="Timeline - Monthry 02/2021"
+            :title="`Timeline Monthly - ` + this.month"
             :data="list_month"
             :columns="columns"
             row-key="name"
@@ -98,7 +93,7 @@
           </q-table>
         </div>
       </q-tab-panel>
-      <!-- ================================================================================================================================= -->
+      <!-- ================================================ Print Select Date =============================================================== -->
       <q-tab-panel name="Select Date">
         <div class="row">
           <div class="row-4">Select Date</div>
@@ -156,7 +151,6 @@
                     :to="'/timeline/' + props.row.id"
                     :icon="props.expand ? '' : 'person_pin_circle'"
                   />
-                  {{ props.row.id}}
                 </q-td>
                 <q-td v-for="col in props.cols" :key="col.name" :props="props">
                   {{ col.value }}
@@ -169,7 +163,7 @@
     </q-tab-panels>
   </q-page>
 </template>
-// =========================================================================================================================================
+
 <script>
 import SectionHeader from "../components/SectionHeader.vue";
 const moment = require("moment");
@@ -183,13 +177,11 @@ export default {
     return {
       tab: "Dairy",
       date: moment().format("YYYY/MM/DD"),
-      list: undefined,
-      list5: undefined,
+      month: moment().format("YYYY/MM"),
       list_month: [],
       list_day: [],
       list_select: [],
       dashbord: [],
-      text: "",
       columns: [
         {
           name: "name",
@@ -239,100 +231,60 @@ export default {
     };
   },
   async mounted() {
-    let resp = await axios.get("http://localhost:3030/api/visitors");
-    this.list = resp.data.result.rows;
+    //<------------------------- Connect Database ----------------------------------->
+    let resp1 = await axios.get("http://localhost:3030/api/visitors");
+    this.list1 = resp1.data.result.rows;
     console.warn("Visitor ");
-    console.warn(resp.data.result.rows);
+    console.warn(resp1.data.result.rows);
 
-    let resp2 = await axios.get("http://localhost:3030/api/taguse");
+    let resp2 = await axios.get("http://localhost:3030/api/scanlog");
     this.list2 = resp2.data.result.rows;
-    console.warn("list2 items taguse");
+    console.warn("list2 scanerlog");
     console.warn(this.list2);
 
-    let resp3 = await axios.get("http://localhost:3030/api/locations");
-    this.list3 = resp3.data.result.rows;
-    console.warn("list3 location");
-    console.warn(this.list3);
-
-    let resp4 = await axios.get("http://localhost:3030/api/scanlog");
-    this.list4 = resp4.data.result.rows;
-    console.warn("list4 scanerlog");
-    console.warn(this.list4);
-
-    console.log(this.list[0].first_name);
-    for (var i = 0; i < this.list2.length; i++) {
-      for (var j = 0; j < this.list.length; j++) {
-        if (this.list2[i].visitor_id == this.list[j].visitor_id) {
-          for (var k = 0; k < this.list4.length; k++) {
-            if (
-              this.list2[i].tag_address == this.list4[k].device_address &&
-              moment(this.list2[i].time_stop).format("YYYY-MM-DD hh:mm:ss") ==
-                moment(this.list4[k].scan_timestamp).format("YYYY-MM-DD hh:mm:ss")
-            ) {
-              for (var l = 0; l < this.list3.length; l++) {
-                if (this.list4[k].scanner_id == this.list3[l].scanner_address) {
-                  const newItem = {
-                    id: this.list2[i].visitor_id,
-                    date: moment(this.list2[i].time_start).format("YYYY-MM-DD"),
-                    location: this.list3[l].room,
-                    name:
-                      this.list[j].first_name + " " + this.list[j].last_name,
-                    time_start: moment(this.list2[i].time_start).format(
-                      "hh:mm"
-                    ),
-                    time_stop: moment(this.list2[i].time_stop).format("hh:mm"),
-                    type: this.list[j].category,
-                  };
-                  this.dashbord.push(newItem);
-                }
-              }
-            }
-            if (
-              this.list2[i].tag_address == this.list4[k].device_address &&
-              this.list2[i].time_stop == null
-            ) {
-              for (var l = 0; l < this.list3.length; l++) {
-                if (this.list4[k].scanner_id == this.list3[l].scanner_address) {
-                  const newItem = {
-                    id: this.list2[i].visitor_id,
-                    date: moment(this.list2[i].time_start).format("YYYY-MM-DD"),
-                    location: this.list3[l].room,
-                    name:
-                      this.list[j].first_name + " " + this.list[j].last_name,
-                    time_start: moment(this.list2[i].time_start).format(
-                      "hh:mm"
-                    ),
-                    time_stop: "In Use",
-                    type: this.list[j].category,
-                  };
-                  this.dashbord.push(newItem);
-                }
-              }
-              break;
-            }
-          }
+  //<------------------------- Create Dashbord ----------------------------------->
+    for (var i = 0; i < this.list1.length; i++) {
+      for (var j = 0; j < this.list2.length; j++) {
+        if (this.list1[i].time_stop == null) {
+          const newItem = {
+            id: this.list1[i].visitor_id,
+            date: moment(this.list1[i].time_start).format("YYYY-MM-DD"),
+            location: this.list2[j].room,
+            name: this.list1[i].first_name + " " + this.list1[i].last_name,
+            time_start: moment(this.list1[i].time_start).format("hh:mm"),
+            time_stop: "In Use",
+            type: this.list1[i].category,
+          };
+          this.dashbord.push(newItem);
+          break
+        }else if(this.list1[i].time_stop == this.list2[j].scan_timestamp){
+          const newItem = {
+            id: this.list1[i].visitor_id,
+            date: moment(this.list1[i].time_start).format("YYYY-MM-DD"),
+            location: this.list2[j].room,
+            name: this.list1[i].first_name + " " + this.list1[i].last_name,
+            time_start: moment(this.list1[i].time_start).format("hh:mm"),
+            time_stop: moment(this.list1[i].time_stop).format("hh:mm"),
+            type: this.list1[i].category,
+          };
+          this.dashbord.push(newItem);
+          break
         }
       }
     }
-    console.warn(this.dashbord);
-     for (var i = 0; i < this.dashbord.length; i++) {
-        if (moment(this.dashbord[i].date).format("YYYY-MM") == "2021-01") {
-          const newItems = {
-            id: this.dashbord[i].id,
-            date: this.dashbord[i].date,
-            location: this.dashbord[i].location,
-            name: this.dashbord[i].name,
-            time_start: this.dashbord[i].time_start,
-            time_stop: this.dashbord[i].time_stop,
-            type: this.dashbord[i].type,
-          };
-          this.list_month.push(newItems);
-        }
+    console.warn(this.dashbord)
+
+      for (var i = 0; i < this.dashbord.length; i++) {
         
       }
       console.warn(this.list_month);
-       for (var i = 0; i < this.dashbord.length; i++) {
-        if (moment(this.dashbord[i].date).format("YYYY-MM-DD") == "2021-02-13") {
+
+      for (var i = 0; i < this.dashbord.length; i++) {
+        //<------------------------- List Day ----------------------------------->
+        if (
+          moment(this.dashbord[i].date).format("YYYY-MM-DD") ==
+          moment().format("YYYY-MM-DD")
+        ) {
           const newItems = {
             id: this.dashbord[i].id,
             date: this.dashbord[i].date,
@@ -344,19 +296,11 @@ export default {
           };
           this.list_day.push(newItems);
         }
-        
-      }
-      console.warn(this.list_day);
-       this.list_select = this.dashbord
-      console.warn(this.list_select);
-      
-  },
-  methods: {
-    async select() {
-      console.warn(this.date)
-     this.list_select = []
-     for (var i = 0; i < this.dashbord.length; i++) {
-        if (moment(this.dashbord[i].date).format("YYYY/MM/DD") == this.date) {
+        //<------------------------- List Mounth ----------------------------------->
+        if (
+          moment(this.dashbord[i].date).format("YYYY-MM") ==
+          moment().format("YYYY-MM")
+        ) {
           const newItems = {
             id: this.dashbord[i].id,
             date: this.dashbord[i].date,
@@ -366,11 +310,38 @@ export default {
             time_stop: this.dashbord[i].time_stop,
             type: this.dashbord[i].type,
           };
-          this.list_select.push(newItems);
+          this.list_month.push(newItems);
         }
       }
+      //<------------------------- Print Test ----------------------------------->
+      console.warn("List Day ")
+      console.warn(this.list_day);
+      console.warn("List Mounth ")
+      console.warn(this.list_month);
+      this.list_select = this.dashbord;
       console.warn(this.list_select);
     },
+    methods: {
+      //<------------------------- Select Date ----------------------------------->
+      async select() {
+        console.warn(this.date);
+        this.list_select = [];
+        for (var i = 0; i < this.dashbord.length; i++) {
+          if (moment(this.dashbord[i].date).format("YYYY/MM/DD") == this.date) {
+            const newItems = {
+              id: this.dashbord[i].id,
+              date: this.dashbord[i].date,
+              location: this.dashbord[i].location,
+              name: this.dashbord[i].name,
+              time_start: this.dashbord[i].time_start,
+              time_stop: this.dashbord[i].time_stop,
+              type: this.dashbord[i].type,
+            };
+            this.list_select.push(newItems);
+          }
+        }
+        console.warn(this.list_select);
+      },
   },
 };
 </script>

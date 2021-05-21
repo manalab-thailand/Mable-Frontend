@@ -10,7 +10,7 @@
       </div>    
         </div>  
         <div class="col">
-          <div class="text-h6">Guest #{{id}}</div>
+          <div class="text-h6">Guest #{{ id }}</div>
           <div class="text-subtitle2"><q-badge color="green-8" :label="room" /></div>
         </div>
 
@@ -51,7 +51,9 @@
         <q-item v-ripple>
           <q-item-section>
             <q-item-label overline>Contact person</q-item-label>
-            <q-item-label>Mr. Teerapong</q-item-label>
+            <q-item-label>{{
+              
+              }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

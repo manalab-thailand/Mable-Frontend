@@ -97,7 +97,6 @@
             label="Reset"
             color="green-6"
             v-close-popup
-            to="/index"
             @click="resetTag()"
           />
           <q-btn flat label="Cancel" color="red-8" v-close-popup />
@@ -108,8 +107,8 @@
 </template>
 
 <script>
-const moment = require("moment");
 import { axios } from "boot/axios";
+const moment = require("moment");
 export default {
   props: [
     "id",
@@ -119,8 +118,8 @@ export default {
     "tel",
     "category",
     "location",
-    "taguse_id",
-    "tag_address"
+    "visitor_id",
+    "tag_address",
   ],
   data() {
     return {
@@ -131,14 +130,14 @@ export default {
 
   methods: {
     async resetTag() {
-      console.log(this.id);
-      await axios
-        .put("http://localhost:3030/api/taguse/" + this.taguse_id, {
+      console.log("http://localhost:3030/api/visitors/" + this.visitor_id);
+      let result = await axios.put(
+        "http://localhost:3030/api/visitors/" + this.visitor_id, {
           time_stop: moment().format(),
-        })
-        .then((result) => {
-          console.log(result);
-        });
+        }
+      );
+      console.warn(result);
+
       let result2 = await axios.post("http://localhost:3030/api/scanlog", [
         {
           device_address: this.tag_address,
@@ -146,6 +145,7 @@ export default {
         },
       ]);
       console.warn(result2);
+      location.reload();
     },
   },
 };

@@ -7,15 +7,15 @@
       </q-card-section>
        <q-card-section>
         Type : {{category}} <br>
-        Location : 1202A<br>
-        Contact person : MR.Mavel
+        Location : 102<br>
+        Contact person : {{contract}}
       </q-card-section>
       </q-card>
 </template>
 
 <script>
 export default {
-    props: ['fname','lname','tel','category','id_civiliz'],
+    props: ['fname','lname','tel','category','id_civiliz','contract'],
 }
 </script>
 

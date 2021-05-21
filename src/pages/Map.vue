@@ -14,18 +14,17 @@
     <div class="container">
       <q-img class="profile-image" src="~assets/map_1.jpg" native-context-menu>
       </q-img>
-
+      <!--------------------------- Location Hall -----------------------------------> 
       <div class="hall-1">
         <div class="row">
-          <div v-for="items in list2" class="col-2" :key="items.taguse_id">
             <div v-for="item in dashbord" :key="item.id">
               <div
-                v-if="item.id == items.taguse_id && item.location == 'Hall'"
+                v-if="item.location == 'Hell'"
                 class="col"
               >
                 <icon-map
-                  :id_visitor="items.visitor_id"
-                  :id="items.taguse_id"
+                  :id_visitor="item.visitor_id"
+                  :id="item.id"
                   :fname="item.fname"
                   :lname="item.lname"
                   :tel="item.tel"
@@ -34,20 +33,19 @@
                 ></icon-map>
               </div>
             </div>
-          </div>
         </div>
       </div>
+      <!--------------------------- Location Room 103 -----------------------------------> 
       <div class="room-103">
         <div class="col">
-          <div v-for="items in list2" class="col-2" :key="items.taguse_id">
             <div v-for="item in dashbord" :key="item.id">
               <div
-                v-if="item.id == items.taguse_id && item.location == 103"
+                v-if="item.location == 103"
                 class="col"
               >
                 <icon-map
-                  :id_visitor="items.visitor_id"
-                  :id="items.taguse_id"
+                  :id_visitor="item.visitor_id"
+                  :id="item.id"
                   :fname="item.fname"
                   :lname="item.lname"
                   :tel="item.tel"
@@ -56,20 +54,19 @@
                 ></icon-map>
               </div>
             </div>
-          </div>
         </div>
       </div>
+      <!--------------------------- Location Room 105 -----------------------------------> 
       <div class="room-105">
         <div class="col">
-          <div v-for="items in list2" class="col-2" :key="items.taguse_id">
             <div v-for="item in dashbord" :key="item.id">
               <div
-                v-if="item.id == items.taguse_id && item.location == 105"
+                v-if="item.location == 105"
                 class="col"
               >
                 <icon-map
-                  :id_visitor="items.visitor_id"
-                  :id="items.taguse_id"
+                  :id_visitor="item.visitor_id"
+                  :id="item.id"
                   :fname="item.fname"
                   :lname="item.lname"
                   :tel="item.tel"
@@ -78,20 +75,19 @@
                 ></icon-map>
               </div>
             </div>
-          </div>
         </div>
       </div>
+      <!--------------------------- Location Room 107 -----------------------------------> 
       <div class="room-107">
         <div class="row">
-          <div v-for="items in list2" class="col-2" :key="items.taguse_id">
             <div v-for="item in dashbord" :key="item.id">
               <div
-                v-if="item.id == items.taguse_id && item.location == 107"
+                v-if="item.location == 107"
                 class="col"
               >
                 <icon-map
-                  :id_visitor="items.visitor_id"
-                  :id="items.taguse_id"
+                  :id_visitor="item.visitor_id"
+                  :id="item.id"
                   :fname="item.fname"
                   :lname="item.lname"
                   :tel="item.tel"
@@ -100,20 +96,19 @@
                 ></icon-map>
               </div>
             </div>
-          </div>
         </div>
       </div>
+      <!--------------------------- Location Room 102 -----------------------------------> 
       <div class="room-102">
         <div class="row">
-          <div v-for="items in list2" :key="items.taguse_id">
             <div v-for="item in dashbord" :key="item.id">
               <div
-                v-if="item.id == items.taguse_id && item.location == 102"
+                v-if="item.location == 102"
                 class="col"
               >
-                <icon-map 
-                  :id_visitor="items.visitor_id"
-                  :id="items.taguse_id"
+                <icon-map
+                  :id_visitor="item.visitor_id"
+                  :id="item.id"
                   :fname="item.fname"
                   :lname="item.lname"
                   :tel="item.tel"
@@ -122,80 +117,9 @@
                 ></icon-map>
               </div>
             </div>
-          </div>
         </div>
       </div>
-       <!-- <div class="hall-1">
-          <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div> 
-      <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-        <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-      </div>
-       <div class="room-103">
-        <div class="col">
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-        </div>
-      </div>
-      <div class="room-105">
-        <div class="col">
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-          <div class="row"><icon-map></icon-map></div>
-        </div>
-      </div>
-      <div class="room-107">
-        <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-        <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-        <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-      </div>
-      <div class="room-102">
-        <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-        <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-        <div class="row">
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-          <div class="col"><icon-map></icon-map></div>
-        </div>
-      </div> -->
     </div>
-    <p></p>
   </q-page>
 </template>
 
@@ -212,62 +136,37 @@ export default {
   },
   data() {
     return {
-      list: undefined,
-      list2: undefined,
-      list3: undefined,
-      list4: undefined,
       dashbord: [],
     };
   },
   async mounted() {
+    //<------------------------- Connect Database ----------------------------------->
     let resp = await axios.get("http://localhost:3030/api/visitors");
     this.list = resp.data.result.rows;
     console.warn("list item visitors");
     console.warn(this.list);
 
-    let resp2 = await axios.get("http://localhost:3030/api/taguse");
+    let resp2 = await axios.get("http://localhost:3030/api/scanlog");
     this.list2 = resp2.data.result.rows;
-    console.warn("list2 items taguse");
+    console.warn("list2 scanerlog");
     console.warn(this.list2);
-
-    let resp3 = await axios.get("http://localhost:3030/api/locations");
-    this.list3 = resp3.data.result.rows;
-    console.warn("list3 location");
-    console.warn(this.list3);
-
-    let resp4 = await axios.get("http://localhost:3030/api/scanlog");
-    this.list4 = resp4.data.result.rows;
-    console.warn("list4 scanerlog");
-    console.warn(this.list4);
-
-    console.log(this.list[0].first_name);
-    for (var i = 0; i < this.list2.length; i++) {
-      for (var j = 0; j < this.list.length; j++) {
-        if (
-          this.list2[i].visitor_id == this.list[j].visitor_id &&
-          this.list2[i].time_stop == null
-        ) {
-          console.warn(this.list2[i].visitor_id);
-          for (var l = 0; l < this.list4.length; l++) {
-            if (this.list2[i].tag_address == this.list4[l].device_address) {
-              console.warn(this.list2[i].tag_address);
-              for (var k = 0; k < this.list3.length; k++) {
-                if (this.list4[l].scanner_id == this.list3[k].scanner_address) {
-                  const newItem = {
-                    id: this.list2[i].taguse_id,
-                    fname: this.list[j].first_name,
-                    lname: this.list[j].last_name,
-                    tel: this.list[j].tel,
-                    contract: this.list[j].contract,
-                    category: this.list[j].category,
-                    location: this.list3[k].room,
-                    visitor_id: this.list[j].visitor_id,
-                  };
-                  this.dashbord.push(newItem);
-                }
-              }
-              break;
-            }
+    //<-------------------------Create Dashbord ----------------------------------->
+    for (var i = 0; i < this.list.length; i++) {
+      if (this.list[i].time_stop == null) {
+        for (var j = 0; j < this.list2.length; j++) {
+          if (this.list[i].tag_address == this.list2[j].device_address) {
+            const newItem = {
+              id: this.list[i].tag_id,
+              fname: this.list[i].first_name,
+              lname: this.list[i].last_name,
+              tel: this.list[i].tel,
+              contract: this.list[i].contract,
+              category: this.list[i].category,
+              location: this.list2[j].room,
+              visitor_id: this.list[i].visitor_id,
+            };
+            this.dashbord.push(newItem);
+            break;
           }
         }
       }
@@ -312,13 +211,3 @@ img {
   position: relative;
 }
 </style>
-
-//  <div class="row" style="hight:800px;width:300px;top: 280px; left: 545px;">
-//       <div style="width:40px">
-//         <icon-map></icon-map>
-//       </div>
-//       <div style="width:40px">
-//         <icon-map></icon-map>
-//       </div>
-      
-//     </div>

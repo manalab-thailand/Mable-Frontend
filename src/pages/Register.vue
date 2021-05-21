@@ -1,5 +1,6 @@
 <template>
   <q-page class="q-pa-sm">
+    <!-------------------------- From Register ----------------------------------->
     <section-header
       title="Register"
       subTitle="การลงทะเบียน Tag"
@@ -74,11 +75,10 @@
               </div>
               <div class="row justify-end" id_civiliz="topper">
                 <div class="col-3">
-                  <!-- <q-btn color="primary-gradient" icon="check" label="OK" clickable @click="add_data()"/> -->
+                  <!-------------------------- Button Add Data ----------------------------------->
                   <q-btn
                     color="primary-gradient"
                     icon="check"
-                    to="/index"
                     label="OK"
                     clickable
                     @click="add_data()"
@@ -124,15 +124,18 @@ export default {
     };
   },
   async mounted() {
+    //<------------------------- Connect Database ----------------------------------->
     let resp = await axios.get("http://localhost:3030/api/visitors");
     this.count = resp.data.result.rows.length;
     this.list = resp.data.result.rows;
     console.warn(this.list)
     console.warn(this.list[this.count-1].visitor_id+1);
     this.posts.visitor_id = this.list[this.count - 1].visitor_id + 1;
+
     let resp2 = await axios.get("http://localhost:3030/api/tags");
     this.list2 = resp2.data.result.rows;
     console.warn(this.list2)
+
     for(var i = 0; i < this.list2.length; i++){
       if(this.list2[i].tag_id==this.id){
          this.taguse_address = this.list2[i].tag_address
@@ -143,27 +146,22 @@ export default {
     console.warn(this.taguse_address)
   },
   methods: {
+    //<------------------------- Fuction Add Data ----------------------------------->
     async add_data() {
       console.warn(this.posts);
-      let result1 = await axios.post(
-        "http://localhost:3030/api/taguse/",
-        [{
-          tag_address: this.taguse_address,
-          visitor_id: this.posts.visitor_id
-        }]
-      );
-      console.log(result1);
       let result = await axios.post("http://localhost:3030/api/visitors", [
         {
+          tag_address: this.taguse_address,
           first_name: this.posts.first_name,
           last_name: this.posts.last_name,
           tel: this.posts.tel,
           category: this.posts.category,
           id_civiliz: this.posts.id_civiliz,
-          contract: this.posts.Preson
+          contract: this.posts.Preson,
         },
       ]);
       console.warn(result);
+
       let result2 = await axios.post("http://localhost:3030/api/scanlog", [
         {
           device_address: this.taguse_address,
@@ -171,6 +169,7 @@ export default {
         },
       ]);
       console.warn(result2);
+      this.$router.push('/index');
     },
   },
 };

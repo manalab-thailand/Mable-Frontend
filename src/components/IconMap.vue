@@ -5,8 +5,7 @@
     color="orange-8" 
     size="30px"
   >
-
-   <q-popup-proxy class="rounded-borders-20">
+      <q-popup-proxy class="rounded-borders-20">
            <Map-card
            :id_visitor="id_visitor"
            :id='id'
@@ -17,6 +16,7 @@
            :room='room'
            ></Map-card>
       </q-popup-proxy>
+   
   </q-icon>
 </template>
 
