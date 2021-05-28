@@ -79,6 +79,9 @@
           Type : {{ category }}<br />
           Contact Person : {{ contract }}<br />
         </q-card-section>
+        <q-card-section class="q-pt-none" style="width: 350px; margin: 15px;font-size:18px">
+          Time Start : {{ time_start }} <br />
+        </q-card-section>
 
         <q-card-actions align="right">
           <q-btn flat label="OK" color="primary" v-close-popup />
@@ -91,7 +94,7 @@
           <span class="q-ml-sm">Are you sure to resrt.</span>
         </q-card-section>
 
-        <q-card-actions align="right">
+        <q-card-actions align="center">
           <q-btn
             flat
             label="Reset"
@@ -120,6 +123,7 @@ export default {
     "location",
     "visitor_id",
     "tag_address",
+    "time_start"
   ],
   data() {
     return {

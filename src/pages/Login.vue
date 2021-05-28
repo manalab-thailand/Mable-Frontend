@@ -1,95 +1,101 @@
 <template>
-    <q-page class="flex flex-center">
-    <div class="q-pa-md"
-    style="max-width: 400px;
-    margin: auto;
-    width: 60%;;
-    padding: 10px;">
-    <div class="row text-primary" style="margin-bottom:40px;">
-       <div class="text-h3">Login</div>
-    </div>
-        <q-form
-      @submit="onSubmit"
-      @reset="onReset"
-      class="q-gutter-md"
-    >
-      <q-input
-        filled
-        v-model="username"
-        label="Username"
-        hint="Username or email"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Please type username or email']"
-      />
+ <q-layout view="hHh Lpr lFf">
+    <q-page-container class="bg-grey-2">
+      <q-page padding class="row items-center justify-center">
+        <div class="row full-width">
+          <div class="col-md-8 offset-md-2 col-xs-12 q-pl-md q-pr-md q-pt-sm">
+            <q-card flat class="bg-white text-black">
+              <div class="row">
+                <div class="col-md-6 col-xs-12 q-pa-md">
+                  <q-img
+                    placeholder-src="~assets/loginpage.png"
+                    src="~assets/loginpage.png"
+                    spinner-color="white"
+                  ></q-img>
+                </div>
 
-      <q-input
-        filled
-        type="password"
-        v-model="password"
-        label="Password"
-        hint="Password"
-        lazy-rules
-        :rules="[
-          val => val !== null && val !== '' || 'Please type your password',
-          val => val.length >= 8|| 'Password must be than 8 charector'
-        ]"
-      />
-      <div class="mt-center">
-        <q-btn to="/index" label="Login" type="submit" color="primary"/>
-      </div>
-    </q-form>
-    </div>
-  </q-page>
+                <div class="col-md-6 col-xs-12">
+                  <div class="q-pa-md">
+                    <div
+                      class="text-h6 q-pb-md text-blue-8 text-center text-weight-bolder"
+                    >
+                      Login
+                    </div>
+                    <q-form
+                      @submit="onSubmit"
+                      @reset="onReset"
+                      class="q-gutter-md"
+                    >
+                      <q-input
+                        filled
+                        v-model="name"
+                        label="Username"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type Username',
+                        ]"
+                      />
+
+                      <q-input
+                        filled
+                        type="password"
+                        v-model="password"
+                        label="Password"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val !== null && val !== '') ||
+                            'Please type your password',
+                        ]"
+                      />
+
+                      <div>
+                        <q-btn label="submit" type="submit" color="primary" @click="onSubmit()" />
+                        <q-btn
+                          label="Reset"
+                          type="reset"
+                          color="primary"
+                          flat
+                          class="q-ml-sm"
+                        />
+                      </div>
+                    </q-form>
+                  </div>
+                </div>
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </q-page>
+    </q-page-container>
+  </q-layout>
 </template>
 
-<script>
+
+
+// <script>
 export default {
-  data () {
+  data() {
     return {
-      username: null,
+      name: null,
       password: null,
-      save_password: false
-    }
+    };
   },
+
   methods: {
-    onSubmit () {
-      if (this.accept !== true) {
-        this.$q.notify({
-          color: 'red-5',
-          textColor: 'white',
-          icon: 'warning',
-          message: 'You need to accept the license and terms first'
-        })
-      } else {
-        this.$q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Submitted'
-        })
+    onSubmit() {
+      if(this.name=="admin"&&this.password=="admin"){
+        console.warn("click submit");
+      this.$router.push('/index');
       }
+      
     },
-    onReset () {
-      this.name = null
-      this.age = null
-      this.accept = false
-    }
-  }
-}
+    onReset() {
+      this.name = null;
+      this.password = null;
+    },
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-$center: center;
-.mt-center{
-  width: 100%;
-    text-align: $center;
-}
-.logo-image{
-  width: 100%;
-}
-.center{
-    margin: auto;
-    width: 60%;;
-    padding: 10px;
-}
-</style>

@@ -38,22 +38,20 @@
         </q-item>
         <q-item v-ripple>
           <q-item-section>
-            <q-item-label overline>Telno</q-item-label>
+            <q-item-label overline>Tel no.</q-item-label>
             <q-item-label>{{tel}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
           <q-item-section>
-            <q-item-label overline>Organization</q-item-label>
+            <q-item-label overline>Category</q-item-label>
             <q-item-label>{{category}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-ripple>
           <q-item-section>
-            <q-item-label overline>Contact person</q-item-label>
-            <q-item-label>{{
-              
-              }}</q-item-label>
+            <q-item-label overline>Contact Person</q-item-label>
+            <q-item-label>{{ contract }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -66,7 +64,7 @@
 
 <script>
 export default {
-  props: ['id_visitor','id','fname','lname','tel','category','room'],
+  props: ['id_visitor','id','fname','lname','tel','category','room','contract'],
 };
 
 </script>

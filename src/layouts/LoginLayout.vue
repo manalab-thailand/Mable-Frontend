@@ -1,17 +1,16 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-primary-gradient">
-      <q-toolbar>
-        <q-toolbar-title style="font-size:30px;margin : 10px;">
-          Mable
+      <q-toolbar class="tab-bar">
+        <q-toolbar-title style="font-size:50px;margin : 10px;">   
+   <q-img class="title-photo" src="~assets/psulogo.png" native-context-menu></q-img>
         </q-toolbar-title>
 
-        <div>BY ManaLab PSU</div>
-      </q-toolbar>
-    </q-header>
+       <a class="active"> BY ManaLab PSU</a>
+      </q-toolbar>    
     <q-page-container>
       <router-view />
     </q-page-container>
+  
   </q-layout>
 </template>
 
@@ -45,4 +44,17 @@ $menu-bar-color: lightgray;
     text-align: $center;
     text-shadow: 2px;
   }
+   .title-photo{
+    width:40%;
+    text-align: center;
+    margin: auto;
+  }
+  a {
+  color: #2b2a2a;
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+
 </style>

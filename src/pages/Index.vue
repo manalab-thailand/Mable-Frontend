@@ -6,10 +6,9 @@
     ></section-header>
     <!-------------------------- Driver Card ------------------------------------>
     <div class="row q-gutter-col-md">
-        <div v-for="item in dashbord" :key="item.id">
+        <div v-for="item in dashbord" :key="item.id" class="col-2" >
             <div v-if="item.visitor_id != 0">
               <device-card
-                class="col-4"
                 :id="item.id"
                 :fname="item.fname"
                 :lname="item.lname"
@@ -19,6 +18,7 @@
                 :location="item.location"
                 :visitor_id="item.visitor_id"
                 :tag_address="item.tag_address"
+                :time_start="item.time_start"
               ></device-card>
             </div>
             <div v-else>
@@ -35,6 +35,7 @@ import SectionHeader from "../components/SectionHeader.vue";
 import DeviceCard from "../components/DeviceCard.vue";
 import AddCard from "../components/AddCard.vue";
 import { axios } from "boot/axios";
+const moment = require("moment");
 
 export default {
   name: "PageIndex",
@@ -84,6 +85,7 @@ export default {
                     category: this.list[j].category,
                     location: this.list4[k].room,
                     tag_id: this.list5[i].tag_id,
+                    time_start: moment(this.list[j].time_start).format(" hh:mm A")
                   };
                   this.dashbord.push(newItem);
                   break;
@@ -98,7 +100,7 @@ export default {
           const newItem = {
             visitor_id: 0,
             tag_address: this.list5[i].tag_address,
-            id : this.list5[i].tag_id
+            tag_id : this.list5[i].tag_id
           };
           this.dashbord.push(newItem);
           break;

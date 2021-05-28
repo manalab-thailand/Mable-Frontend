@@ -14,16 +14,16 @@
            :tel='tel'
            :category='category'
            :room='room'
+           :contract='contract'
            ></Map-card>
       </q-popup-proxy>
-   
   </q-icon>
 </template>
 
 <script>
 import MapCard from "../components/MapCard.vue"
 export default {
-   props: ['id_visitor','id','fname','lname','tel','category','room'],
+   props: ['id_visitor','id','fname','lname','tel','category','room','contract'],
    components: {
     MapCard
   },
