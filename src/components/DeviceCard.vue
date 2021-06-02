@@ -123,8 +123,12 @@ export default {
     "location",
     "visitor_id",
     "tag_address",
+<<<<<<< HEAD
     "time_start",
     "id_civiliz"
+=======
+    "time_start"
+>>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
   ],
   data() {
     return {

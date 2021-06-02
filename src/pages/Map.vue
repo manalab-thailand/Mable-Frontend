@@ -15,6 +15,7 @@
       <q-img class="profile-image" src="~assets/map_1.jpg" native-context-menu>
       </q-img>
       <!--------------------------- Location Hall ----------------------------------->
+<<<<<<< HEAD
       <div class="hall-1 row q-gutter-y-lg ">
         <template v-for="item in dashbord">
           <icon-map
@@ -38,6 +39,34 @@
               <icon-map
               v-if="item.location == 103" 
                 class="col"
+=======
+      <div class="hall-1 row">
+        <template v-for="item in dashbord">
+          <div
+            v-if="item.location == 'Hall'"
+            :key="item.location"
+            class="col-4"
+          >
+            <icon-map
+              :id_visitor="item.visitor_id"
+              :id="item.id"
+              :fname="item.fname"
+              :lname="item.lname"
+              :tel="item.tel"
+              :category="item.category"
+              :room="item.location"
+              :contract="item.contract"
+            ></icon-map>
+          </div>
+        </template>
+      </div>
+      <!--------------------------- Location Room 103 ----------------------------------->
+      <div class="room-103">
+        <div class="col">
+          <div v-for="item in dashbord" :key="item.id">
+            <div v-if="item.location == 103" class="col">
+              <icon-map
+>>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
                 :id_visitor="item.visitor_id"
                 :id="item.id"
                 :fname="item.fname"
@@ -47,6 +76,7 @@
                 :room="item.location"
                 :contract="item.contract"
               ></icon-map>
+<<<<<<< HEAD
           </div>
       </div>
       <!--------------------------- Location Room 105 ----------------------------------->
@@ -55,6 +85,18 @@
               <icon-map
               v-if="item.location == 105" 
               class="col"
+=======
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--------------------------- Location Room 105 ----------------------------------->
+      <div class="room-105">
+        <div class="col">
+          <div v-for="item in dashbord" :key="item.id">
+            <div v-if="item.location == 105" class="col">
+              <icon-map
+>>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
                 :id_visitor="item.visitor_id"
                 :id="item.id"
                 :fname="item.fname"
@@ -64,6 +106,7 @@
                 :room="item.location"
                 :contract="item.contract"
               ></icon-map>
+<<<<<<< HEAD
           </div>
       </div>
       <!--------------------------- Location Room 107 ----------------------------------->
@@ -85,6 +128,33 @@
       </div>
       <!--------------------------- Location Room 102 ----------------------------------->
       <div class="room-102 row q-gutter-y-md">
+=======
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--------------------------- Location Room 107 ----------------------------------->
+      <div class="room-107">
+        <div class="row">
+          <template v-for="item in dashbord">
+            <div v-if="item.location == 107"  :key="item.id" class="col-4">
+              <icon-map
+                :id_visitor="item.visitor_id"
+                :id="item.id"
+                :fname="item.fname"
+                :lname="item.lname"
+                :tel="item.tel"
+                :category="item.category"
+                :room="item.location"
+                :contract="item.contract"
+              ></icon-map>
+            </div>
+          </template>
+        </div>
+      </div>
+      <!--------------------------- Location Room 102 ----------------------------------->
+      <div class="room-102 row">
+>>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
         <template v-for="item in dashbord">
           <icon-map
             :key="item.id"
@@ -172,9 +242,16 @@ img {
 }
 .room-102 {
   position: absolute;
+<<<<<<< HEAD
   top: 52.5%;
   left: 47.5%;
   width: 250px;
+=======
+  top: 57%;
+  left: 47.5%;
+  width: 250px;
+  height: 120px;
+>>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
 }
 .room-103 {
   position: absolute;
