@@ -14,110 +14,92 @@
     <div class="container">
       <q-img class="profile-image" src="~assets/map_1.jpg" native-context-menu>
       </q-img>
-      <!--------------------------- Location Hall -----------------------------------> 
-      <div class="hall-1">
-        <div class="row">
-            <div v-for="item in dashbord" :key="item.id">
-              <div
-                v-if="item.location == 'Hell'"
-                class="col"
-              >
-                <icon-map
-                  :id_visitor="item.visitor_id"
-                  :id="item.id"
-                  :fname="item.fname"
-                  :lname="item.lname"
-                  :tel="item.tel"
-                  :category="item.category"
-                  :room="item.location"
-                ></icon-map>
-              </div>
-            </div>
-        </div>
+      <!--------------------------- Location Hall ----------------------------------->
+      <div class="hall-1 row q-gutter-y-lg ">
+        <template v-for="item in dashbord">
+          <icon-map
+            v-if="item.location == 'Hall'"
+            :key="item.id"
+            class="col-4"
+            :id_visitor="item.visitor_id"
+            :id="item.id"
+            :fname="item.fname"
+            :lname="item.lname"
+            :tel="item.tel"
+            :category="item.category"
+            :room="item.location"
+            :contract="item.contract"
+          ></icon-map>
+        </template>
       </div>
-      <!--------------------------- Location Room 103 -----------------------------------> 
-      <div class="room-103">
-        <div class="col">
-            <div v-for="item in dashbord" :key="item.id">
-              <div
-                v-if="item.location == 103"
+      <!--------------------------- Location Room 103 ----------------------------------->
+      <div class="room-103 q-gutter-y-xl q-gutter-x-sm">
+          <div v-for="item in dashbord" :key="item.id">
+              <icon-map
+              v-if="item.location == 103" 
                 class="col"
-              >
-                <icon-map
-                  :id_visitor="item.visitor_id"
-                  :id="item.id"
-                  :fname="item.fname"
-                  :lname="item.lname"
-                  :tel="item.tel"
-                  :category="item.category"
-                  :room="item.location"
-                ></icon-map>
-              </div>
-            </div>
-        </div>
+                :id_visitor="item.visitor_id"
+                :id="item.id"
+                :fname="item.fname"
+                :lname="item.lname"
+                :tel="item.tel"
+                :category="item.category"
+                :room="item.location"
+                :contract="item.contract"
+              ></icon-map>
+          </div>
       </div>
-      <!--------------------------- Location Room 105 -----------------------------------> 
-      <div class="room-105">
-        <div class="col">
-            <div v-for="item in dashbord" :key="item.id">
-              <div
-                v-if="item.location == 105"
-                class="col"
-              >
-                <icon-map
-                  :id_visitor="item.visitor_id"
-                  :id="item.id"
-                  :fname="item.fname"
-                  :lname="item.lname"
-                  :tel="item.tel"
-                  :category="item.category"
-                  :room="item.location"
-                ></icon-map>
-              </div>
-            </div>
-        </div>
+      <!--------------------------- Location Room 105 ----------------------------------->
+      <div class="room-105 q-gutter-y-xl q-gutter-x-sm">
+          <div v-for="item in dashbord" :key="item.id ">
+              <icon-map
+              v-if="item.location == 105" 
+              class="col"
+                :id_visitor="item.visitor_id"
+                :id="item.id"
+                :fname="item.fname"
+                :lname="item.lname"
+                :tel="item.tel"
+                :category="item.category"
+                :room="item.location"
+                :contract="item.contract"
+              ></icon-map>
+          </div>
       </div>
-      <!--------------------------- Location Room 107 -----------------------------------> 
-      <div class="room-107">
-        <div class="row">
-            <div v-for="item in dashbord" :key="item.id">
-              <div
-                v-if="item.location == 107"
-                class="col"
-              >
-                <icon-map
-                  :id_visitor="item.visitor_id"
-                  :id="item.id"
-                  :fname="item.fname"
-                  :lname="item.lname"
-                  :tel="item.tel"
-                  :category="item.category"
-                  :room="item.location"
-                ></icon-map>
-              </div>
-            </div>
-        </div>
+      <!--------------------------- Location Room 107 ----------------------------------->
+      <div class="room-107 row q-gutter-y-xl ">
+        <template v-for="item in dashbord">
+          <div v-if="item.location == 107" :key="item.id" class="col-4">
+            <icon-map
+              :id_visitor="item.visitor_id"
+              :id="item.id"
+              :fname="item.fname"
+              :lname="item.lname"
+              :tel="item.tel"
+              :category="item.category"
+              :room="item.location"
+              :contract="item.contract"
+            ></icon-map>
+          </div>
+        </template>
       </div>
-      <!--------------------------- Location Room 102 -----------------------------------> 
-      <div class="room-102">
-        <div class="row">
-            <div v-for="item in dashbord" :key="item.id">
-              <div
-                v-if="item.location == 102"
-                class="col"
-              >
-                <icon-map
-                  :id_visitor="item.visitor_id"
-                  :id="item.id"
-                  :fname="item.fname"
-                  :lname="item.lname"
-                  :tel="item.tel"
-                  :category="item.category"
-                  :room="item.location"
-                ></icon-map>
-              </div>
-            </div>
-        </div>
+      <!--------------------------- Location Room 102 ----------------------------------->
+      <div class="room-102 row q-gutter-y-md">
+        <template v-for="item in dashbord">
+          <icon-map
+            :key="item.id"
+            class="col-4"
+            v-if="item.location == 102"
+            :id_visitor="item.visitor_id"
+            :id="item.id"
+            :fname="item.fname"
+            :lname="item.lname"
+            :tel="item.tel"
+            :category="item.category"
+            :room="item.location"
+            :contract="item.contract"
+          ></icon-map>
+        </template>
       </div>
     </div>
   </q-page>
@@ -184,28 +166,37 @@ img {
 }
 .hall-1 {
   position: absolute;
-  top: 35%;
-  left: 37%;
+  top: 30%;
+  left: 34.3%;
+  width: 250px;
 }
 .room-102 {
   position: absolute;
-  top: 56%;
-  left: 50.5%;
+  top: 52.5%;
+  left: 47.5%;
+  width: 250px;
 }
 .room-103 {
   position: absolute;
   top: 15%;
   left: 59%;
+  width: 60px;
+  height: 250px;
+  overflow: hidden;
 }
 .room-105 {
   position: absolute;
-  top: 19%;
-  left: 64%;
+  top: 19.5%;
+  left: 63.8%;
+  width: 70px;
+  height: 250px;
+  overflow: hidden;
 }
 .room-107 {
   position: absolute;
-  top: 21%;
+  top: 19.5%;
   left: 68.3%;
+  width: 150px;
 }
 .container {
   position: relative;

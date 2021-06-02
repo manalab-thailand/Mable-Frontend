@@ -28,40 +28,97 @@
             </div>
           </q-card-section>
           <q-card-section style="margin: 30px">
-            <form action="" @sumbit="add_data" method="post">
+            <!-- -------------- form ----------------------------- -->
+            <form
+              @submit.prevent.stop="onSubmit"
+              @reset.prevent.stop="onReset"
+              method="post"
+            >
               <div class="row">
                 <div class="col-2">Name</div>
                 <div class="col-4">
                   <q-input
-                    category="text"
-                    name="first_name"
+                    type="text"
+                    name="first name"
                     v-model="posts.first_name"
                     label="Fist Name"
+                    lazy-rules
+                    maxlength="15"
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) ||
+                        'Please enter your first name',
+                    ]"
                   />
                 </div>
                 <div class="col-4">
-                  <q-input v-model="posts.last_name" label="Last Name" />
+                  <q-input
+                    name="last name"
+                    v-model="posts.last_name"
+                    label="Last Name"
+                    lazy-rules
+                    maxlength="15"
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) ||
+                        'Please enter your last name',
+                    ]"
+                  />
                 </div>
               </div>
               <div class="row" id_civiliz="top">
                 <div class="col-2">tel</div>
                 <div class="col-8">
-                  <q-input v-model="posts.tel" label="Number tel" />
+                  <q-input
+                    type="text"
+                    v-model="posts.tel"
+                    label="Number tel"
+                    mask="### - #######"
+                    lazy-rules
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) ||
+                        'Please type your number tel',
+                      (val) =>
+                        val.length >= 13 || 'Please enter your real number tel',
+                    ]"
+                  />
                 </div>
               </div>
               <div class="row" id_civiliz="top">
                 <div class="col-2">id_civiliz civilizecation</div>
                 <div class="col-8">
                   <q-input
+                    type="text"
                     v-model="posts.id_civiliz"
-                    label="13 id_civiliz Civilication"
+                    label="x-xxxx-xxxxx-xx-x"
+                    mask="# - #### - ##### - ## - #"
+                    lazy-rules
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) ||
+                        'Please enter your 13 Identification Number',
+                      (val) =>
+                        val.length >= 25 ||
+                        'Please enter your real Identification Number',
+                    ]"
                   />
                 </div>
               </div>
               <div class="row" id_civiliz="top">
                 <div class="col-2">Person Contract</div>
                 <div class="col-8">
-                  <q-input v-model="posts.Preson" label="Person Contract" />
+                  <q-input
+                    v-model="posts.Person"
+                    label="Person Contract"
+                    lazy-rules
+                    maxlength="20"
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) ||
+                        'Please enter your person contract',
+                    ]"
+                  />
                 </div>
               </div>
               <div class="row" id_civiliz="top">
@@ -70,6 +127,12 @@
                   <q-input
                     v-model="posts.category"
                     label="category to contract"
+                    lazy-rules
+                    maxlength="20"
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please enter your category',
+                    ]"
                   />
                 </div>
               </div>
@@ -77,12 +140,19 @@
                 <div class="col-3">
                   <!-------------------------- Button Add Data ----------------------------------->
                   <q-btn
-                    color="primary-gradient"
                     icon="check"
-                    label="OK"
+                    color="primary-gradient"
+                     label="Submit" type="submit"
                     clickable
-                    @click="add_data()"
                   />
+                  <q-btn
+                    icon="refresh"
+                    label="Reset"
+                  type="reset"
+                    color="primary"
+                    flat
+                    class="q-ml-sm"
+                  ></q-btn>
                 </div>
               </div>
             </form>
@@ -97,7 +167,6 @@
 import SectionHeader from "../components/SectionHeader.vue";
 import DeviceCard from "../components/DeviceCard.vue";
 import AddCard from "../components/AddCard.vue";
-const moment = require("moment");
 import { axios } from "boot/axios";
 export default {
   name: "PageIndex",
@@ -115,7 +184,7 @@ export default {
         category: "",
         id_civiliz: "",
         Location: null,
-        Preson: null,
+        Person: "",
         taguse_address: "",
         visitor_id: "",
       },
@@ -128,49 +197,73 @@ export default {
     let resp = await axios.get("http://localhost:3030/api/visitors");
     this.count = resp.data.result.rows.length;
     this.list = resp.data.result.rows;
-    console.warn(this.list)
-    console.warn(this.list[this.count-1].visitor_id+1);
+    console.warn(this.list);
+    console.warn(this.list[this.count - 1].visitor_id + 1);
     this.posts.visitor_id = this.list[this.count - 1].visitor_id + 1;
 
     let resp2 = await axios.get("http://localhost:3030/api/tags");
     this.list2 = resp2.data.result.rows;
-    console.warn(this.list2)
+    console.warn(this.list2);
 
-    for(var i = 0; i < this.list2.length; i++){
-      if(this.list2[i].tag_id==this.id){
-         this.taguse_address = this.list2[i].tag_address
-         console.warn("id address : "+this.taguse_address)
-         break
+    for (var i = 0; i < this.list2.length; i++) {
+      if (this.list2[i].tag_id == this.id) {
+        this.taguse_address = this.list2[i].tag_address;
+        console.warn("id address : " + this.taguse_address);
+        break;
       }
     }
-    console.warn(this.taguse_address)
+    console.warn(this.taguse_address);
   },
   methods: {
     //<------------------------- Fuction Add Data ----------------------------------->
-    async add_data() {
-      console.warn(this.posts);
-      let result = await axios.post("http://localhost:3030/api/visitors", [
-        {
-          tag_address: this.taguse_address,
-          first_name: this.posts.first_name,
-          last_name: this.posts.last_name,
-          tel: this.posts.tel,
-          category: this.posts.category,
-          id_civiliz: this.posts.id_civiliz,
-          contract: this.posts.Preson,
-        },
-      ]);
-      console.warn(result);
+    async onSubmit() {
+      // console.warn(" 1 : "+this.posts.first_name + " 2 : "+this.posts.last_name + " 3 : "+this.posts.tel + " 4 : "+this.posts.category +" 5 : "+ this.posts.id_civiliz  +" 6 : "+ this.posts.Person + " 7 : "+ this.posts.tel.length)
+      if (
+        this.posts.first_name !== "" &&
+        this.posts.last_name !== "" &&
+        this.posts.tel !== "" &&
+        this.posts.category !== "" &&
+        this.posts.id_civiliz !== "" &&
+        this.posts.Person !== "" &&
+        this.posts.tel.length == 13 &&
+        this.posts.id_civiliz.length == 25
+      ) {
+        console.warn("connect");
+        console.warn(this.posts);
+        let result = await axios.post("http://localhost:3030/api/visitors", [
+          {
+            tag_address: this.taguse_address,
+            first_name: this.posts.first_name,
+            last_name: this.posts.last_name,
+            tel: this.posts.tel,
+            category: this.posts.category,
+            id_civiliz: this.posts.id_civiliz,
+            contract: this.posts.Person,
+          },
+        ]);
+        console.warn(result);
 
-      let result2 = await axios.post("http://localhost:3030/api/scanlog", [
-        {
-          device_address: this.taguse_address,
-          scanner_id: "7DA280B4-42AA-4DD7-B090-481BCF1048B9",
-        },
-      ]);
-      console.warn(result2);
-      this.$router.push('/index');
+        let result2 = await axios.post("http://localhost:3030/api/scanlog", [
+          {
+            device_address: this.taguse_address,
+            scanner_id: "8e61a75d-12b7-4bda-8bc1-ed5983d33408",
+          },
+        ]);
+        console.warn(result2);
+        this.$router.push("/index");
+      } else {
+        console.warn("Not connect");
+         alert("Please inform your information before submit.");
+      }
     },
+    onReset () {
+      this.posts.first_name = null;
+      this.posts.last_name = null;
+      this.posts.tel = null;
+      this.posts.category = null;
+      this.posts.id_civiliz = null;
+      this.posts.Person = null;
+    }
   },
 };
 </script>
