@@ -194,7 +194,7 @@ export default {
   },
   async mounted() {
     //<------------------------- Connect Database ----------------------------------->
-    const url = "http://localhost:3030/api/" 
+    const url = "http://mean.psu.ac.th:3000/api/" 
     let resp = await axios.get(url+"visitors");
     this.count = resp.data.result.rows.length;
     this.list = resp.data.result.rows;
@@ -231,7 +231,7 @@ export default {
       ) {
         console.warn("connect");
         console.warn(this.posts);
-        const url = "http://localhost:3030/api/" 
+        const url = "http://mean.psu.ac.th:3000/api/" 
         let result = await axios.post(url+"visitors", [
           {
             tag_address: this.taguse_address,

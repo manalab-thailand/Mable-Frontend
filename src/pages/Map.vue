@@ -110,7 +110,6 @@ import IconMap from "src/components/IconMap.vue";
 import SectionHeader from "../components/SectionHeader.vue";
 
 import { axios } from "boot/axios";
-
 export default {
   components: {
     SectionHeader,
@@ -123,7 +122,7 @@ export default {
   },
   async mounted() {
     //<------------------------- Connect Database ----------------------------------->
-    const url = "http://localhost:3030/api/" 
+    const url = "http://mean.psu.ac.th:3000/api/" 
     let resp = await axios.get(url+"visitors");
     this.list = resp.data.result.rows;
     console.warn("list item visitors");
