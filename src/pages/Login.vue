@@ -1,9 +1,5 @@
 <template>
-<<<<<<< HEAD
   <q-layout view="hHh Lpr lFf">
-=======
- <q-layout view="hHh Lpr lFf">
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
     <q-page-container class="bg-grey-2">
       <q-page padding class="row items-center justify-center">
         <div class="row full-width">
@@ -55,16 +51,12 @@
                       />
 
                       <div>
-<<<<<<< HEAD
                         <q-btn
                           label="submit"
                           type="submit"
                           color="primary"
                           @click="onSubmit()"
                         />
-=======
-                        <q-btn label="submit" type="submit" color="primary" @click="onSubmit()" />
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
                         <q-btn
                           label="Reset"
                           type="reset"
@@ -98,15 +90,9 @@ export default {
 
   methods: {
     onSubmit() {
-<<<<<<< HEAD
       if (this.name == "admin" && this.password == "admin") {
         console.warn("click submit");
         this.$router.push("/index");
-=======
-      if(this.name=="admin"&&this.password=="admin"){
-        console.warn("click submit");
-      this.$router.push('/index');
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
       }
       
     },
@@ -114,13 +100,10 @@ export default {
       this.name = null;
       this.password = null;
     },
-<<<<<<< HEAD
     onReset() {
       this.name = null;
       this.password = null;
     },
-=======
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
   },
 };
 </script>

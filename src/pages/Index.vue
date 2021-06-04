@@ -19,10 +19,7 @@
                 :visitor_id="item.visitor_id"
                 :tag_address="item.tag_address"
                 :time_start="item.time_start"
-<<<<<<< HEAD
                 :id_civiliz="item.id_civiliz"
-=======
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
               ></device-card>
             </div>
             <div v-else>
@@ -88,14 +85,9 @@ export default {
                     contract: this.list[j].contract,
                     category: this.list[j].category,
                     location: this.list4[k].room,
-<<<<<<< HEAD
                     tag_address: this.list5[i].tag_address,
                     time_start: moment(this.list[j].time_start).format(" hh:mm A"),
                     id_civiliz: this.list[j].id_civiliz
-=======
-                    tag_id: this.list5[i].tag_id,
-                    time_start: moment(this.list[j].time_start).format(" hh:mm A")
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
                   };
                   this.dashbord.push(newItem);
                   break;

@@ -148,11 +148,7 @@
                   <q-btn
                     icon="refresh"
                     label="Reset"
-<<<<<<< HEAD
                   type="reset"
-=======
-                    type="reset"
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
                     color="primary"
                     flat
                     class="q-ml-sm"
@@ -220,34 +216,19 @@ export default {
   },
   methods: {
     //<------------------------- Fuction Add Data ----------------------------------->
-<<<<<<< HEAD
     async onSubmit() {
       // console.warn(" 1 : "+this.posts.first_name + " 2 : "+this.posts.last_name + " 3 : "+this.posts.tel + " 4 : "+this.posts.category +" 5 : "+ this.posts.id_civiliz  +" 6 : "+ this.posts.Person + " 7 : "+ this.posts.tel.length)
       if (
         this.posts.first_name !== "" &&
-=======
-    async add_data() {
-      // console.warn(" 1 : "+this.posts.first_name + " 2 : "+this.posts.last_name + " 3 : "+this.posts.tel + " 4 : "+this.posts.category +" 5 : "+ this.posts.id_civiliz  +" 6 : "+ this.posts.Person + " 7 : "+ this.posts.tel.length)
-      if (
-       this.posts.first_name !== "" &&
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
         this.posts.last_name !== "" &&
         this.posts.tel !== "" &&
         this.posts.category !== "" &&
         this.posts.id_civiliz !== "" &&
-<<<<<<< HEAD
         this.posts.Person !== "" &&
         this.posts.tel.length == 13 &&
         this.posts.id_civiliz.length == 25
       ) {
         console.warn("connect");
-=======
-        this.posts.Person !== ""&&
-        this.posts.tel.length==13&&
-        this.posts.id_civiliz.length==25
-      ) {
-        console.warn("connect")
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
         console.warn(this.posts);
         let result = await axios.post("http://localhost:3030/api/visitors", [
           {
@@ -265,23 +246,14 @@ export default {
         let result2 = await axios.post("http://localhost:3030/api/scanlog", [
           {
             device_address: this.taguse_address,
-<<<<<<< HEAD
             scanner_id: "8e61a75d-12b7-4bda-8bc1-ed5983d33408",
           },
         ]);
-=======
-            scanner_id: "7DA280B4-42AA-4DD7-B090-481BCF1048B9",
-          },
-        ]);                                                                    
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
         console.warn(result2);
         this.$router.push("/index");
       } else {
         console.warn("Not connect");
-<<<<<<< HEAD
          alert("Please inform your information before submit.");
-=======
->>>>>>> 059f54e8d7f6c5a8a86ce481a28b1af5ab67a28a
       }
     },
     onReset () {
