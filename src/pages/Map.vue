@@ -123,12 +123,13 @@ export default {
   },
   async mounted() {
     //<------------------------- Connect Database ----------------------------------->
-    let resp = await axios.get("http://localhost:3030/api/visitors");
+    const url = "http://localhost:3030/api/" 
+    let resp = await axios.get(url+"visitors");
     this.list = resp.data.result.rows;
     console.warn("list item visitors");
     console.warn(this.list);
 
-    let resp2 = await axios.get("http://localhost:3030/api/scanlog");
+    let resp2 = await axios.get(url+"scanlog");
     this.list2 = resp2.data.result.rows;
     console.warn("list2 scanerlog");
     console.warn(this.list2);
@@ -169,12 +170,16 @@ img {
   top: 30%;
   left: 34.3%;
   width: 250px;
+  height: 250px;
+  overflow: hidden;
 }
 .room-102 {
   position: absolute;
   top: 52.5%;
   left: 47.5%;
   width: 250px;
+  height: 220px;
+  overflow: hidden;
 }
 .room-103 {
   position: absolute;

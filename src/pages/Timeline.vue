@@ -71,7 +71,8 @@ export default {
   },
   async mounted() {
     //<------------------------- Connect Database ----------------------------------->
-    let resp1 = await axios.get("http://localhost:3030/api/visitors");
+    const url = "http://localhost:3030/api/" 
+    let resp1 = await axios.get(url+"visitors");
     this.list = resp1.data.result.rows;
     console.warn("list item visitors");
     console.warn(this.list);
@@ -82,7 +83,7 @@ export default {
       }
     }
     console.warn(" j : " + j);
-    let resp2 = await axios.get("http://localhost:3030/api/selectlog", {
+    let resp2 = await axios.get(url+"selectlog", {
       params: {
         device_address: this.list[j].tag_address,
         time_start: moment(this.list[j].time_start).format(

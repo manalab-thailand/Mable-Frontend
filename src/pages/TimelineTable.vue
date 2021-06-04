@@ -232,12 +232,13 @@ export default {
   },
   async mounted() {
     //<------------------------- Connect Database ----------------------------------->
-    let resp1 = await axios.get("http://localhost:3030/api/visitors");
+    const url = "http://localhost:3030/api/" 
+    let resp1 = await axios.get(url+"visitors");
     this.list1 = resp1.data.result.rows;
     console.warn("Visitor ");
     console.warn(resp1.data.result.rows);
 
-    let resp2 = await axios.get("http://localhost:3030/api/scanlog");
+    let resp2 = await axios.get(url+"scanlog");
     this.list2 = resp2.data.result.rows;
     console.warn("list2 scanerlog");
     console.warn(this.list2);
@@ -245,7 +246,9 @@ export default {
   //<------------------------- Create Dashbord ----------------------------------->
     for (var i = 0; i < this.list1.length; i++) {
       for (var j = 0; j < this.list2.length; j++) {
+      // console.warn("visitor_id l : "+this.list2[j].scan_timestamp)
         if (this.list1[i].time_stop == null) {
+          console.warn("visitor_id : "+this.list1[i].visitor_id)
           const newItem = {
             id: this.list1[i].visitor_id,
             date: moment(this.list1[i].time_start).format("YYYY-MM-DD"),
@@ -258,6 +261,7 @@ export default {
           this.dashbord.push(newItem);
           break
         }else if(this.list1[i].time_stop == this.list2[j].scan_timestamp){
+          console.warn("visitor_id k : "+this.list2[j].scan_timestamp)
           const newItem = {
             id: this.list1[i].visitor_id,
             date: moment(this.list1[i].time_start).format("YYYY-MM-DD"),

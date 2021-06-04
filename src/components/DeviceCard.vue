@@ -135,23 +135,23 @@ export default {
 
   methods: {
     async resetTag() {
-      console.log("http://localhost:3030/api/visitors/" + this.visitor_id);
+      const url = "http://localhost:3030/api/" 
       let result = await axios.put(
-        "http://localhost:3030/api/visitors/" + this.visitor_id, {
+        url+"visitors/" + this.visitor_id, {
           time_stop: moment().format(),
         }
       );
       console.warn(result);
 
-      let result2 = await axios.post("http://localhost:3030/api/scanlog", [
+      let result2 = await axios.post(url+"scanlog", [
         {
           device_address: this.tag_address,
-          scanner_id: "7DA280B4-42AA-4DD7-B090-481BCF1048B9",
+          scanner_id: "8e61a75d-12b7-4bda-8bc1-ed5983d33408-003",
         },
       ]);
       console.warn("kans : "+ this.tag_address)
       console.warn(result2);
-      // location.reload();
+      location.reload();
     },
   },
 };

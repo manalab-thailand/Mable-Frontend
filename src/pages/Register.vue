@@ -194,14 +194,15 @@ export default {
   },
   async mounted() {
     //<------------------------- Connect Database ----------------------------------->
-    let resp = await axios.get("http://localhost:3030/api/visitors");
+    const url = "http://localhost:3030/api/" 
+    let resp = await axios.get(url+"visitors");
     this.count = resp.data.result.rows.length;
     this.list = resp.data.result.rows;
     console.warn(this.list);
     console.warn(this.list[this.count - 1].visitor_id + 1);
     this.posts.visitor_id = this.list[this.count - 1].visitor_id + 1;
 
-    let resp2 = await axios.get("http://localhost:3030/api/tags");
+    let resp2 = await axios.get(url+"tags");
     this.list2 = resp2.data.result.rows;
     console.warn(this.list2);
 
@@ -212,7 +213,7 @@ export default {
         break;
       }
     }
-    console.warn(this.taguse_address);
+    console.warn("tag id : "+this.taguse_address);
   },
   methods: {
     //<------------------------- Fuction Add Data ----------------------------------->
@@ -230,7 +231,8 @@ export default {
       ) {
         console.warn("connect");
         console.warn(this.posts);
-        let result = await axios.post("http://localhost:3030/api/visitors", [
+        const url = "http://localhost:3030/api/" 
+        let result = await axios.post(url+"visitors", [
           {
             tag_address: this.taguse_address,
             first_name: this.posts.first_name,
@@ -243,10 +245,10 @@ export default {
         ]);
         console.warn(result);
 
-        let result2 = await axios.post("http://localhost:3030/api/scanlog", [
+        let result2 = await axios.post(url+"scanlog", [
           {
             device_address: this.taguse_address,
-            scanner_id: "8e61a75d-12b7-4bda-8bc1-ed5983d33408",
+            scanner_id: "48ec0916-5e21-44d5-9d2a-edd00717f2be",
           },
         ]);
         console.warn(result2);
