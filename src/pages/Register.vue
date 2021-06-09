@@ -248,7 +248,7 @@ export default {
         let result2 = await axios.post(url+"scanlog", [
           {
             device_address: this.taguse_address,
-            scanner_id: "48ec0916-5e21-44d5-9d2a-edd00717f2be",
+            scanner_id: "8e61a75d-12b7-4bda-8bc1-ed5983d33408-003",
           },
         ]);
         console.warn(result2);

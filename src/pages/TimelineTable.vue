@@ -231,6 +231,9 @@ export default {
     };
   },
   async mounted() {
+    setTimeout(function () {
+      location.reload(1);
+    }, 60000);
     //<------------------------- Connect Database ----------------------------------->
     const url = "http://mean.psu.ac.th:3000/api/" 
     let resp1 = await axios.get(url+"visitors");
@@ -240,15 +243,17 @@ export default {
 
     let resp2 = await axios.get(url+"scanlog");
     this.list2 = resp2.data.result.rows;
-    console.warn("list2 scanerlog");
+    console.warn("list2 scanerlog kk");
     console.warn(this.list2);
 
   //<------------------------- Create Dashbord ----------------------------------->
     for (var i = 0; i < this.list1.length; i++) {
       for (var j = 0; j < this.list2.length; j++) {
       // console.warn("visitor_id l : "+this.list2[j].scan_timestamp)
+      moment().format("hh:mm A")
+        console.warn("Test login "+ i+" : " +moment(this.list1[i].time_stop).format("hh:mm A")+" : "+ j +" : "+moment(this.list2[j].scan_timestamp).format("hh:mm A"))
         if (this.list1[i].time_stop == null) {
-          console.warn("visitor_id : "+this.list1[i].visitor_id)
+          console.warn("visitor_id In : "+this.list1[i].visitor_id)
           const newItem = {
             id: this.list1[i].visitor_id,
             date: moment(this.list1[i].time_start).format("YYYY-MM-DD"),
@@ -260,8 +265,8 @@ export default {
           };
           this.dashbord.push(newItem);
           break
-        }else if(this.list1[i].time_stop == this.list2[j].scan_timestamp){
-          console.warn("visitor_id k : "+this.list2[j].scan_timestamp)
+        }else if(moment(this.list1[i].time_stop).format("hh:mm A") == moment(this.list2[j].scan_timestamp).format("hh:mm A")){
+          console.warn("visitor_id Out : "+this.list1[i].visitor_id)
           const newItem = {
             id: this.list1[i].visitor_id,
             date: moment(this.list1[i].time_start).format("YYYY-MM-DD"),
@@ -276,12 +281,14 @@ export default {
         }
       }
     }
+    console.warn("Time line all")
     console.warn(this.dashbord)
 
       for (var i = 0; i < this.dashbord.length; i++) {
         
       }
-      console.warn(this.list_month);
+      // console.warn("Time line month //")
+      // console.warn(this.list_month);
 
       for (var i = 0; i < this.dashbord.length; i++) {
         //<------------------------- List Day ----------------------------------->
@@ -328,7 +335,7 @@ export default {
     methods: {
       //<------------------------- Select Date ----------------------------------->
       async select() {
-        console.warn(this.date);
+        // console.warn(this.date);
         this.list_select = [];
         for (var i = 0; i < this.dashbord.length; i++) {
           if (moment(this.dashbord[i].date).format("YYYY/MM/DD") == this.date) {

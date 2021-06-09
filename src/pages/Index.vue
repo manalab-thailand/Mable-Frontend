@@ -49,20 +49,24 @@ export default {
       dashbord: [],
     };
   },
+
   async mounted() {
+    setTimeout(function () {
+      location.reload(1);
+    }, 60000);
     //<------------------------- Connect Database ----------------------------------->
-    const url = "http://mean.psu.ac.th:3000/api/" 
-    let resp = await axios.get(url+"visitors");
+    const url = "http://mean.psu.ac.th:3000/api/";
+    let resp = await axios.get(url + "visitors");
     this.list = resp.data.result.rows;
     console.warn("list item visitors");
     console.warn(this.list);
 
-    let resp4 = await axios.get(url+"scanlog");
+    let resp4 = await axios.get(url + "scanlog");
     this.list4 = resp4.data.result.rows;
     console.warn("list4 scanerlog");
     console.warn(this.list4);
 
-    let resp5 = await axios.get(url+"tags");
+    let resp5 = await axios.get(url + "tags");
     this.list5 = resp5.data.result.rows;
     console.warn("list5 tags");
     console.warn(this.list5);
@@ -70,7 +74,10 @@ export default {
     for (var i = 0; i < this.list5.length; i++) {
       // console.warn(this.list5[i].tag_address);
       for (var j = 0; j < this.list.length; j++) {
-        if (this.list5[i].tag_address == this.list[j].tag_address && this.list[j].time_stop == null) {
+        if (
+          this.list5[i].tag_address == this.list[j].tag_address &&
+          this.list[j].time_stop == null
+        ) {
           for (var k = 0; k < this.list4.length; k++) {
             if (this.list5[i].tag_address == this.list4[k].device_address) {
               const newItem = {
@@ -92,7 +99,7 @@ export default {
             }
           }
           break;
-        } else if (j == this.list.length-1) {
+        } else if (j == this.list.length - 1) {
           const newItem = {
             visitor_id: 0,
             tag_address: this.list5[i].tag_address,

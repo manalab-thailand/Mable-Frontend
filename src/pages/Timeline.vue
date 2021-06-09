@@ -70,9 +70,13 @@ export default {
     };
   },
   async mounted() {
-    //<------------------------- Connect Database ----------------------------------->
-    const url = "http://mean.psu.ac.th:3000/api/" 
-    let resp1 = await axios.get(url+"visitors");
+    setTimeout(function () {
+      location.reload(1);
+    }, 60000);
+    //<------------------------- Connect Database ---------------------------------------------------หฟกฟหกฟหก----->
+    // const url = "http://localhost:3030/api/";
+    const url = "http://mean.psu.ac.th:3000/api/";
+    let resp1 = await axios.get(url + "visitors");
     this.list = resp1.data.result.rows;
     console.warn("list item visitors");
     console.warn(this.list);
@@ -83,13 +87,13 @@ export default {
       }
     }
     console.warn(" j : " + j);
-    let resp2 = await axios.get(url+"selectlog", {
+    let resp2 = await axios.get(url + "selectlog", {
       params: {
         device_address: this.list[j].tag_address,
         time_start: moment(this.list[j].time_start).format(
           "YYYY-MM-DD hh:mm:ss A"
         ),
-        time_stop: moment(this.list[j].time_stop).format(
+        time_stop: moment(this.list[j].time_stop).add(1, 'minute').format(
           "YYYY-MM-DD hh:mm:ss A"
         ),
       },
@@ -100,11 +104,15 @@ export default {
 
     //<------------------------- Create Timeline ----------------------------------->
     var rooms = this.list2[0].room;
-    if(this.list[j].time_stop==null){
+    var times = moment(this.list2[0].scan_timestamp).format("hh:mm A")
+    console.warn(moment(this.list2[0].scan_timestamp).format("hh:mm A"))
+    if (this.list[j].time_stop == null) {
       this.time.push("In Use Now.");
     }
     for (var i = 0; i < this.list2.length; i++) {
-      if (this.list2[i].room != rooms) {
+      if (this.list2[i].room != rooms 
+      // && moment(this.list2[i].scan_timestamp).format("hh:mm A") != times
+      ) {
         this.time.push(this.list2[i - 1].room);
         this.time.push(
           moment(this.list2[i].scan_timestamp).format("YYYY-MM-DD")
@@ -112,19 +120,20 @@ export default {
         this.timeline.push(this.time);
         this.time = [];
         rooms = this.list2[i].room;
+        times = moment(this.list2[i].scan_timestamp).format("hh:mm A")
         --i;
       } else {
         this.time.push(moment(this.list2[i].scan_timestamp).format("hh:mm A"));
       }
     }
-    
+
     this.time.push(this.list2[this.list2.length - 1].room);
     this.time.push(
       moment(this.list2[this.list2.length - 1].scan_timestamp).format(
         "YYYY-MM-DD"
       )
     );
-    
+
     this.timeline.push(this.time);
     console.warn(this.timeline);
   },

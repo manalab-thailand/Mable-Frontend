@@ -1,4 +1,5 @@
 <template>
+<div >
   <q-icon
     name="fas fa-user-tag"
     class="tag blink row q-gutter-xs"
@@ -19,6 +20,7 @@
     </q-popup-proxy>
      <q-badge color="green-8" :label="'TAG '+id"  />
   </q-icon>
+  </div>
 </template>
 
 <script>

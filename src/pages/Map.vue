@@ -121,6 +121,9 @@ export default {
     };
   },
   async mounted() {
+    setTimeout(function () {
+      location.reload(1);
+    }, 60000);
     //<------------------------- Connect Database ----------------------------------->
     const url = "http://mean.psu.ac.th:3000/api/" 
     let resp = await axios.get(url+"visitors");
@@ -167,7 +170,7 @@ img {
 .hall-1 {
   position: absolute;
   top: 30%;
-  left: 34.3%;
+  left: 34.6%;
   width: 250px;
   height: 250px;
   overflow: hidden;
@@ -175,7 +178,7 @@ img {
 .room-102 {
   position: absolute;
   top: 52.5%;
-  left: 47.5%;
+  left: 48%;
   width: 250px;
   height: 220px;
   overflow: hidden;
