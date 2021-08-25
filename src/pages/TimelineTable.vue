@@ -235,7 +235,7 @@ export default {
       location.reload(1);
     }, 60000);
     //<------------------------- Connect Database ----------------------------------->
-    const url = "http://mean.psu.ac.th:3000/api/" 
+    const url = "http://localhost:3030/api/" 
     let resp1 = await axios.get(url+"visitors");
     this.list1 = resp1.data.result.rows;
     console.warn("Visitor ");

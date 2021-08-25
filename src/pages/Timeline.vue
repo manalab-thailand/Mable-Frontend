@@ -4,47 +4,62 @@
       title="Time Line"
       subTitle="แสดงข้อมูลการใช้งานของ User"
     ></section-header>
-    <!-------------------------- Infomation User ----------------------------------->
-    <div v-for="itemz in list" :key="itemz.visitor_id">
-      <div v-if="itemz.visitor_id == id" class="row justify-evenly">
-        <info-card
-          class="col-4"
-          :fname="itemz.first_name"
-          :lname="itemz.last_name"
-          :tel="itemz.tel"
-          :id_civiliz="itemz.id_civiliz"
-          :category="itemz.category"
-          :contract="itemz.contract"
-        />
-        <q-card class="col-3 rounded-borders-10 shadow-5" id="my-card-2">
-          <q-icon
-            color="blue"
-            id="icon"
-            class="center"
-            name="fas fa-map-marked"
-          />
+    <!-------------------------- Infomation User ------------------------------------>
+    <q-layout view="hHh Lpr lFf">
+      <q-page-container class="bg-grey-2">
+              <div v-for="itemz in list" :key="itemz.visitor_id" >
+                <div v-if="itemz.visitor_id == id" class="row justify-center" >
+                
+                  <div class="col-md-8 col-xs-12 q-pa-md " >
+                    <info-card
+                      class="col-4"
+                      :fname="itemz.first_name"
+                      :lname="itemz.last_name"
+                      :tel="itemz.tel"
+                      :id_civiliz="itemz.id_civiliz"
+                      :category="itemz.category"
+                      :contract="itemz.contract"
+                    />
+                  </div>         
+                    <div class="col-md-3 col-xs-12 q-pa-md text-blue-8" >
+                        <q-card
+                          class="col-3 rounded-borders-10 shadow-5 text-center"
+                          id="my-card-2" 
+                        >
+                          <q-img height="auto" width="150px" 
+                            placeholder-src="~assets/timeline.png"
+                            src="~assets/timeline.png"
+                            spinner-color="white"
+                          ></q-img>
 
-          <q-card-section class="text-h4 text-center">
-            <div>Tag {{ itemz.tag_id }}</div>
-          </q-card-section>
-        </q-card>
-      </div>
-    </div>
-    <!--------------------------- Timeline User ----------------------------------->
-    <q-timeline color="secondary" style="padding: 2rem">
-      <q-timeline-entry heading> Timeline </q-timeline-entry>
+                          <q-card-section class="text-h5 text-center">
+                            <div>Tag {{ itemz.tag_id }}</div>
+                          </q-card-section>
+                        </q-card>
+                  
+                    </div>
+              
+                </div>
+              </div>
+       
+        <!--------------------------- Timeline User ------------------------------------>
+        <q-timeline color="secondary" style="padding-left: 4rem " >
+          <q-timeline-entry heading> Timeline </q-timeline-entry>
 
-      <q-timeline-entry
-        v-for="time in timeline"
-        :key="time.time"
-        :title="'Room : ' + time[time.length - 2]"
-        :subtitle="time[time.length - 1]"
-      >
-        Time : {{ time[time.length - 3] }} - {{ time[0] }}
-      </q-timeline-entry>
-      <q-timeline-entry title=" Start " subtitle=" " icon="watch_later">
-      </q-timeline-entry>
-    </q-timeline>
+          <q-timeline-entry
+            v-for="time in timeline"
+            :key="time.time"
+            :title="'Room : ' + time[time.length - 2]"
+            :subtitle="time[time.length - 1]"
+          >
+            Time : {{ time[time.length - 3] }} - {{ time[0] }}
+          </q-timeline-entry>
+          <q-timeline-entry title=" Start " subtitle=" " icon="watch_later">
+          </q-timeline-entry>
+        </q-timeline>
+        <!---------------------------close Timeline User ------------------------------------>
+      </q-page-container>
+   </q-layout>
   </q-page>
 </template>
 
@@ -70,12 +85,12 @@ export default {
     };
   },
   async mounted() {
-    setTimeout(function () {
-      location.reload(1);
-    }, 60000);
-    //<------------------------- Connect Database ---------------------------------------------------หฟกฟหกฟหก----->
+    // setTimeout(function () {
+    //   location.reload(1);
+    // }, 60000);
+    //<------------------------- Connect Database ----------------------------------------------------------->
     // const url = "http://localhost:3030/api/";
-    const url = "http://mean.psu.ac.th:3000/api/";
+    const url = "http://localhost:3030/api/";
     let resp1 = await axios.get(url + "visitors");
     this.list = resp1.data.result.rows;
     console.warn("list item visitors");
@@ -134,8 +149,56 @@ export default {
       )
     );
 
+    // for (var i = 0; i < this.list2.length; i++) {
+      // console.warn(this.list2[i].room +" ==== "+rooms+" ---> "+i)
+      // console.warn(moment(this.list2[i].scan_timestamp).format("hh:mm A") +" ==== "+ this.time[this.time.length-1]+" : "+i)
+      //  if(moment(this.list2[i].scan_timestamp).format("hh:mm A")==this.time[this.time.length-1]&&this.list2[i].room!=rooms){
+      //   console.warn("kanssssssssssssssssssssssssssssssssss")
+      //   console.warn(this.list2[i-1].device_rssi+" // "+this.list2[i].device_rssi)
+      //   var diis_1 = 10**(((-69)-(this.list2[i-1].device_rssi))/(10 * 2))
+      //   var diis_2 = 10**(((-69)-(this.list2[i].device_rssi))/(10 * 2))
+      //   console.warn(diis_1+" -- "+diis_2)
+      //   if(diis_1>diis_2){
+      //     console.warn("Beafore")
+      //     console.warn(this.time)
+      //     // this.time = [];
+      //     console.warn("After")
+      //     console.warn(this.time)
+      //   }
+      // } else 
+      // if (this.list2[i].room != rooms && moment(this.list2[i].scan_timestamp).format("hh:mm A") != this.time[this.time.length-1]) {
+      //   console.warn("Date : "+moment(this.list2[i].scan_timestamp).format("YYYY-MM-DD"))
+      //   this.time.push(this.list2[i - 1].room);
+      //   this.time.push(
+      //     moment(this.list2[i].scan_timestamp).format("YYYY-MM-DD")
+      //   );
+      //   this.timeline.push(this.time);
+      //   console.warn(this.time)
+      //   this.time = [];
+      //   rooms = this.list2[i].room;
+      //   times = moment(this.list2[i].scan_timestamp).format("hh:mm A")
+      //   --i;
+      // } else if(this.list2[i].room != rooms && moment(this.list2[i].scan_timestamp).format("hh:mm A") == this.time[this.time.length-1]){
+      //   console.warn("kanssssssssssssssssssssssssssss")
+      //    console.warn(this.time)
+      //    ++i
+      // }else {
+      //   this.time.push(moment(this.list2[i].scan_timestamp).format("hh:mm A"));
+      //   console.warn(moment(this.list2[i].scan_timestamp).format("hh:mm A"))
+      // }
+      
+    // }
+
+    this.time.push(this.list2[this.list2.length - 1].room);
+    this.time.push(
+      moment(this.list2[this.list2.length - 1].scan_timestamp).format(
+        "YYYY-MM-DD"
+      )
+    );
+    
     this.timeline.push(this.time);
     console.warn(this.timeline);
+    // console.warn(10**(((-69)-(-85))/(10 * 2)))
   },
 };
 </script>

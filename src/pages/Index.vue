@@ -51,12 +51,12 @@ export default {
   },
 
   async mounted() {
-    setTimeout(function () {
-      location.reload(1);
-    }, 60000);
+    // setTimeout(function () {
+    //   location.reload(1);
+    // }, 60000);
     //<------------------------- Connect Database ----------------------------------->
-    const url = "http://mean.psu.ac.th:3000/api/";
-    let resp = await axios.get(url + "visitors");
+    const url = "http://localhost:3030/api/";
+    let resp = await axios.get(url + "visitors",300);
     this.list = resp.data.result.rows;
     console.warn("list item visitors");
     console.warn(this.list);

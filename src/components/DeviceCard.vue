@@ -135,7 +135,7 @@ export default {
 
   methods: {
     async resetTag() {
-      const url = "http://mean.psu.ac.th:3000/api/" 
+      const url = "http://localhost:3030/api/" 
       let result = await axios.put(
         url+"visitors/" + this.visitor_id, {
           time_stop: moment().format(),
