@@ -114,6 +114,7 @@ export default {
         }
       }
     }
+    console.warn("This dash bord");
     console.warn(this.dashbord);
   },
   // methods: {

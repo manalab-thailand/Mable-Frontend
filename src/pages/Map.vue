@@ -126,9 +126,9 @@ export default {
     };
   },
   async mounted() {
-    setTimeout(function () {
-      location.reload(1);
-    }, 60000);
+    // setTimeout(function () {
+    //   location.reload(1);
+    // }, 60000);
     //<------------------------- Connect Database ----------------------------------->
     const url = "http://localhost:3030/api/" 
     let resp = await axios.get(url+"visitors");
